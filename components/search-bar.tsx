@@ -34,7 +34,7 @@ export function SearchBar({ initialQuery = "", compact = false }: SearchBarProps
     }
 
     const recognition = new Recognition();
-    recognition.onresult = (event) => {
+    recognition.onresult = (event: any) => {
       const transcript = event.results?.[0]?.[0]?.transcript || "";
       setQuery(transcript);
       router.push(`/search?q=${encodeURIComponent(transcript)}`);
