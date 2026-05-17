@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   compress: true,
-  reactCompiler: true,
   async headers() {
     return [
       {
