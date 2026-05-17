@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({
     recipe: recipe.title,
-    jobs: languages.map((language) => ({
+    jobs: languages.map((language: string) => ({
       language,
       prompt: buildTranslationPrompt(recipe, language),
       status: "queued",
