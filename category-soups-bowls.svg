@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#17120F"/>
+  <rect x="36" y="36" width="1128" height="828" rx="40" fill="url(#a)"/>
+  <ellipse cx="600" cy="520" rx="278" ry="164" fill="#2A1D16"/>
+  <ellipse cx="600" cy="520" rx="244" ry="128" fill="#D08A44"/>
+  <path d="M424 468C468 492 518 506 602 506C678 506 738 492 782 464" stroke="#F8ECDC" stroke-width="16" stroke-linecap="round"/>
+  <text x="88" y="148" fill="#F6EDE2" font-size="62" font-family="Georgia, serif">Soups and Bowls</text>
+  <text x="88" y="214" fill="#E6D1B1" font-size="28" font-family="Arial, sans-serif">Comforting broths and layered noodle bowls.</text>
+  <defs>
+    <linearGradient id="a" x1="82" y1="62" x2="1098" y2="848" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#503728"/>
+      <stop offset="1" stop-color="#1A1310"/>
+    </linearGradient>
+  </defs>
+</svg>

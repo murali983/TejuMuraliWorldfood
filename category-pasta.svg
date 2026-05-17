@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#150F0A"/>
+  <rect x="36" y="36" width="1128" height="828" rx="40" fill="url(#a)"/>
+  <ellipse cx="608" cy="518" rx="270" ry="160" fill="#F3EBDD"/>
+  <path d="M462 492C516 456 564 448 610 448C658 448 714 458 756 492" stroke="#80A14E" stroke-width="18" stroke-linecap="round"/>
+  <path d="M446 532C508 576 558 590 616 590C666 590 718 574 776 536" stroke="#D9B85C" stroke-width="18" stroke-linecap="round"/>
+  <text x="88" y="148" fill="#F6EDE2" font-size="62" font-family="Georgia, serif">Pasta and Noodles</text>
+  <text x="88" y="214" fill="#E6D1B1" font-size="28" font-family="Arial, sans-serif">Silky sauces, fresh herbs, polished comfort.</text>
+  <defs>
+    <linearGradient id="a" x1="86" y1="52" x2="1090" y2="844" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5E422E"/>
+      <stop offset="1" stop-color="#1A1310"/>
+    </linearGradient>
+  </defs>
+</svg>

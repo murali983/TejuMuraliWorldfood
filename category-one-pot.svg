@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#140F0C"/>
+  <rect x="36" y="36" width="1128" height="828" rx="40" fill="url(#a)"/>
+  <rect x="370" y="380" width="460" height="236" rx="56" fill="#36231A"/>
+  <rect x="410" y="334" width="378" height="68" rx="34" fill="#C57933"/>
+  <path d="M334 498H370M830 498H868" stroke="#E0B48B" stroke-width="18" stroke-linecap="round"/>
+  <text x="88" y="148" fill="#F6EDE2" font-size="62" font-family="Georgia, serif">One-Pot Meals</text>
+  <text x="88" y="214" fill="#E6D1B1" font-size="28" font-family="Arial, sans-serif">Slow-built comfort with deep stovetop flavor.</text>
+  <defs>
+    <linearGradient id="a" x1="86" y1="54" x2="1078" y2="846" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#523425"/>
+      <stop offset="1" stop-color="#1D1411"/>
+    </linearGradient>
+  </defs>
+</svg>

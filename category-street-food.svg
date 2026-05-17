@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#170F0D"/>
+  <rect x="36" y="36" width="1128" height="828" rx="40" fill="url(#a)"/>
+  <circle cx="466" cy="520" r="110" fill="#E59A3C"/>
+  <circle cx="602" cy="520" r="110" fill="#F2D179"/>
+  <circle cx="738" cy="520" r="110" fill="#D86730"/>
+  <text x="88" y="148" fill="#F6EDE2" font-size="62" font-family="Georgia, serif">Street Food</text>
+  <text x="88" y="214" fill="#E6D1B1" font-size="28" font-family="Arial, sans-serif">Crunch, freshness, and bold topping energy.</text>
+  <defs>
+    <linearGradient id="a" x1="82" y1="62" x2="1110" y2="838" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#623322"/>
+      <stop offset="1" stop-color="#221411"/>
+    </linearGradient>
+  </defs>
+</svg>

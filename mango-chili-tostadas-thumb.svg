@@ -1,0 +1,18 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1920" fill="#120D0B"/>
+  <rect x="40" y="40" width="1000" height="1840" rx="44" fill="url(#a)"/>
+  <circle cx="388" cy="1026" r="124" fill="#E59F3D"/>
+  <circle cx="540" cy="992" r="124" fill="#F2D176"/>
+  <circle cx="692" cy="1026" r="124" fill="#D76B30"/>
+  <text x="96" y="212" fill="#F6EDE2" font-size="82" font-family="Georgia, serif">Mango Chili</text>
+  <text x="96" y="304" fill="#F6EDE2" font-size="82" font-family="Georgia, serif">Tostadas</text>
+  <text x="96" y="392" fill="#E6D1B1" font-size="34" font-family="Arial, sans-serif">25-second AI short blueprint</text>
+  <circle cx="540" cy="1600" r="80" fill="#F6EDE2" fill-opacity="0.14"/>
+  <path d="M516 1566L582 1600L516 1634V1566Z" fill="#F6EDE2"/>
+  <defs>
+    <linearGradient id="a" x1="94" y1="88" x2="960" y2="1820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#613523"/>
+      <stop offset="1" stop-color="#1F1411"/>
+    </linearGradient>
+  </defs>
+</svg>

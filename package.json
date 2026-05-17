@@ -1,0 +1,39 @@
+{
+  "name": "tejaswi-murali-world-foods",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Luxury global food magazine and AI-powered recipe publishing platform.",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "content:generate": "node scripts/generate-recipes.mjs",
+    "content:translate": "node scripts/translate-content.mjs",
+    "social:publish": "node scripts/social-publish.mjs",
+    "sitemap:submit": "node scripts/submit-sitemap.mjs"
+  },
+  "dependencies": {
+    "@prisma/client": "7.8.0",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.0",
+    "@types/node": "25.7.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "eslint": "10.3.0",
+    "eslint-config-next": "16.2.6",
+    "prisma": "7.8.0",
+    "tailwindcss": "4.3.0",
+    "typescript": "6.0.3"
+  }
+}

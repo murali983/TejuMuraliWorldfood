@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#130E0B"/>
+  <rect x="34" y="34" width="1132" height="832" rx="42" fill="url(#a)"/>
+  <circle cx="472" cy="562" r="108" fill="#F6E7C7"/>
+  <circle cx="472" cy="562" r="66" fill="#D37B3B"/>
+  <circle cx="728" cy="562" r="108" fill="#F6E7C7"/>
+  <circle cx="728" cy="562" r="66" fill="#D37B3B"/>
+  <text x="92" y="144" fill="#F6EDE2" font-size="56" font-family="Georgia, serif">Portuguese Cinnamon Custard Tarts</text>
+  <text x="92" y="210" fill="#E6D1B1" font-size="26" font-family="Arial, sans-serif">Flaky pastry, silky custard, caramelized tops, warm spice.</text>
+  <defs>
+    <linearGradient id="a" x1="82" y1="58" x2="1092" y2="842" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#694430"/>
+      <stop offset="1" stop-color="#1E1411"/>
+    </linearGradient>
+  </defs>
+</svg>

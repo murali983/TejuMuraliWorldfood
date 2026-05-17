@@ -1,0 +1,17 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#130E0C"/>
+  <rect x="34" y="34" width="1132" height="832" rx="42" fill="url(#a)"/>
+  <ellipse cx="600" cy="570" rx="294" ry="174" fill="#2E1F17"/>
+  <ellipse cx="600" cy="558" rx="260" ry="138" fill="#B95C31"/>
+  <circle cx="498" cy="524" r="18" fill="#D8C46E"/>
+  <circle cx="640" cy="536" r="18" fill="#75843B"/>
+  <circle cx="718" cy="578" r="18" fill="#D8C46E"/>
+  <text x="92" y="144" fill="#F6EDE2" font-size="56" font-family="Georgia, serif">Moroccan Lemon Olive Chickpea Tagine</text>
+  <text x="92" y="210" fill="#E6D1B1" font-size="26" font-family="Arial, sans-serif">Warm spices, tomatoes, chickpeas, preserved lemon brightness.</text>
+  <defs>
+    <linearGradient id="a" x1="82" y1="58" x2="1098" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#593624"/>
+      <stop offset="1" stop-color="#1E1411"/>
+    </linearGradient>
+  </defs>
+</svg>

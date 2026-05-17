@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#120E0B"/>
+  <rect x="30" y="30" width="1140" height="570" rx="32" fill="url(#a)"/>
+  <circle cx="929" cy="180" r="124" fill="#C97A32" fill-opacity="0.35"/>
+  <circle cx="171" cy="478" r="164" fill="#F4D8B5" fill-opacity="0.12"/>
+  <text x="100" y="260" fill="#F7F0E7" font-size="74" font-family="Georgia, serif">Tejaswi Murali</text>
+  <text x="100" y="348" fill="#F7F0E7" font-size="74" font-family="Georgia, serif">World Foods</text>
+  <text x="100" y="414" fill="#E6D1B1" font-size="28" font-family="Arial, sans-serif">Luxury global recipes, AI-assisted editorial systems, and search-first food publishing.</text>
+  <defs>
+    <linearGradient id="a" x1="88" y1="58" x2="1078" y2="544" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#452817"/>
+      <stop offset="1" stop-color="#17120F"/>
+    </linearGradient>
+  </defs>
+</svg>

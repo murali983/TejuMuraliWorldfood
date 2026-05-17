@@ -1,0 +1,17 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1920" fill="#120D0A"/>
+  <rect x="40" y="40" width="1000" height="1840" rx="44" fill="url(#a)"/>
+  <ellipse cx="540" cy="1030" rx="296" ry="184" fill="#EDE8D9"/>
+  <path d="M382 1048C434 988 484 970 540 970C602 970 654 992 700 1046" stroke="#82A34F" stroke-width="22" stroke-linecap="round"/>
+  <text x="96" y="212" fill="#F6EDE2" font-size="82" font-family="Georgia, serif">Pistachio Pesto</text>
+  <text x="96" y="304" fill="#F6EDE2" font-size="82" font-family="Georgia, serif">Pasta</text>
+  <text x="96" y="392" fill="#E6D1B1" font-size="34" font-family="Arial, sans-serif">30-second AI short blueprint</text>
+  <circle cx="540" cy="1600" r="80" fill="#F6EDE2" fill-opacity="0.14"/>
+  <path d="M516 1566L582 1600L516 1634V1566Z" fill="#F6EDE2"/>
+  <defs>
+    <linearGradient id="a" x1="96" y1="88" x2="958" y2="1820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5C4330"/>
+      <stop offset="1" stop-color="#1A1310"/>
+    </linearGradient>
+  </defs>
+</svg>

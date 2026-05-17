@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#1A120D"/>
+  <rect x="36" y="36" width="1128" height="828" rx="40" fill="url(#a)"/>
+  <ellipse cx="610" cy="520" rx="286" ry="168" fill="#F6E5CB"/>
+  <ellipse cx="610" cy="520" rx="252" ry="136" fill="#F2F0E8"/>
+  <path d="M426 490C462 460 522 438 606 438C694 438 758 462 794 494" stroke="#D89B48" stroke-width="20" stroke-linecap="round"/>
+  <text x="88" y="148" fill="#F6EDE2" font-size="62" font-family="Georgia, serif">Rice Dishes</text>
+  <text x="88" y="214" fill="#E6D1B1" font-size="28" font-family="Arial, sans-serif">Layered flavor, aromatic grains, celebration plates.</text>
+  <defs>
+    <linearGradient id="a" x1="82" y1="62" x2="1110" y2="838" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#61422C"/>
+      <stop offset="1" stop-color="#211511"/>
+    </linearGradient>
+  </defs>
+</svg>

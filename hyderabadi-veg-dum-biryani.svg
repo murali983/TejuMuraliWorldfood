@@ -1,0 +1,19 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#140F0C"/>
+  <rect x="34" y="34" width="1132" height="832" rx="42" fill="url(#a)"/>
+  <ellipse cx="612" cy="560" rx="304" ry="184" fill="#3A2417"/>
+  <ellipse cx="612" cy="542" rx="270" ry="150" fill="#F6E8BE"/>
+  <path d="M430 534C490 490 560 474 612 474C680 474 738 496 796 540" stroke="#D7882D" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="486" cy="520" r="14" fill="#7D8D34"/>
+  <circle cx="560" cy="572" r="12" fill="#C66A37"/>
+  <circle cx="652" cy="536" r="12" fill="#7D8D34"/>
+  <circle cx="736" cy="566" r="14" fill="#C66A37"/>
+  <text x="92" y="144" fill="#F6EDE2" font-size="62" font-family="Georgia, serif">Hyderabadi Veg Dum Biryani</text>
+  <text x="92" y="210" fill="#E6D1B1" font-size="26" font-family="Arial, sans-serif">Saffron rice, herbs, fried onions, and celebratory layering.</text>
+  <defs>
+    <linearGradient id="a" x1="80" y1="58" x2="1098" y2="842" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5D3B24"/>
+      <stop offset="1" stop-color="#1A1310"/>
+    </linearGradient>
+  </defs>
+</svg>
