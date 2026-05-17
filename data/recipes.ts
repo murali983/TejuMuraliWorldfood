@@ -89,9 +89,246 @@ export const cuisines: CuisineSummary[] = [
       "Pastry traditions, egg-rich sweets, and coastal-inspired cooking with old-world warmth.",
     region: "Southern Europe",
   },
+  {
+    slug: "thai",
+    title: "Thai",
+    description:
+      "Bright herbs, layered heat, coconut richness, and balanced sweet-salty-acid notes.",
+    region: "Southeast Asia",
+  },
+  {
+    slug: "korean",
+    title: "Korean",
+    description:
+      "Bold seasoning, fermented depth, sesame aroma, and highly satisfying bowl meals.",
+    region: "East Asia",
+  },
+  {
+    slug: "greek",
+    title: "Greek",
+    description:
+      "Olive oil-led cooking, lemon brightness, herbs, and deeply comforting baked staples.",
+    region: "Southern Europe",
+  },
+  {
+    slug: "lebanese",
+    title: "Lebanese",
+    description:
+      "Fresh herbs, grains, warming spices, and generous mezze-style comfort.",
+    region: "Middle East",
+  },
+  {
+    slug: "chinese",
+    title: "Chinese",
+    description:
+      "Fast, aromatic wok-driven cooking with balanced texture and savory intensity.",
+    region: "East Asia",
+  },
+  {
+    slug: "spanish",
+    title: "Spanish",
+    description:
+      "Rice-centered comfort, smoked paprika warmth, and vibrant shareable plates.",
+    region: "Southern Europe",
+  },
+  {
+    slug: "turkish",
+    title: "Turkish",
+    description:
+      "Tomato-rich breakfasts, pepper warmth, and generous home-style pan cooking.",
+    region: "West Asia",
+  },
+  {
+    slug: "ethiopian",
+    title: "Ethiopian",
+    description:
+      "Slow-cooked lentils, warming spice blends, and hearty communal comfort.",
+    region: "East Africa",
+  },
+  {
+    slug: "brazilian",
+    title: "Brazilian",
+    description:
+      "Coconut, peppers, herbs, and bright stews that feel sunny and deeply comforting.",
+    region: "South America",
+  },
+  {
+    slug: "vietnamese",
+    title: "Vietnamese",
+    description:
+      "Fragrant broths, crisp herbs, and fresh aromatic balance with elegant simplicity.",
+    region: "Southeast Asia",
+  },
+  {
+    slug: "german",
+    title: "German",
+    description:
+      "Hearty skillet dishes, forest mushrooms, and practical cold-weather comfort.",
+    region: "Central Europe",
+  },
+  {
+    slug: "french",
+    title: "French",
+    description:
+      "Vegetable-forward depth, rustic technique, and polished bistro-style balance.",
+    region: "Western Europe",
+  },
 ];
 
-export const recipes: Recipe[] = [
+type WorldRecipeSeed = {
+  slug: string;
+  title: string;
+  cuisine: string;
+  country: string;
+  category: string;
+  diet: string[];
+  difficulty: "Easy" | "Intermediate" | "Advanced";
+  prepMinutes: number;
+  cookMinutes: number;
+  servings: number;
+  nutrition: {
+    calories: number;
+    protein: string;
+    carbs: string;
+    fat: string;
+    fiber: string;
+    sugar: string;
+    sodium: string;
+  };
+  heroImage: string;
+  imageAlt: string;
+  excerpt: string;
+  description: string;
+  history: string;
+  tags: string[];
+  ingredients: Array<{ amount: string; item: string; notes?: string }>;
+  steps: string[];
+  cookingTips: string[];
+  storageTips: string[];
+  healthBenefits: string[];
+  faqs: Array<{ question: string; answer: string }>;
+  trendingScore: number;
+  publishedAt: string;
+  updatedAt: string;
+  relatedSlugs: string[];
+};
+
+function buildWorldRecipe(seed: WorldRecipeSeed, index: number): Recipe {
+  return {
+    id: `recipe_world_${index + 1}`,
+    slug: seed.slug,
+    title: seed.title,
+    description: seed.description,
+    excerpt: seed.excerpt,
+    seoTitle: `${seed.title} Recipe | Tejaswi Murali World Foods`,
+    seoDescription: `${seed.title} from ${seed.country} with detailed steps, nutrition, tips, FAQs, and world-cuisine cooking guidance.`,
+    heroImage: seed.heroImage,
+    imageAlt: seed.imageAlt,
+    cuisine: seed.cuisine,
+    country: seed.country,
+    category: seed.category,
+    diet: seed.diet,
+    difficulty: seed.difficulty,
+    prepMinutes: seed.prepMinutes,
+    cookMinutes: seed.cookMinutes,
+    totalMinutes: seed.prepMinutes + seed.cookMinutes,
+    servings: seed.servings,
+    nutrition: seed.nutrition,
+    ingredients: seed.ingredients,
+    steps: [
+      {
+        title: "Prepare the flavor base",
+        detail:
+          seed.steps[0] ||
+          `Set up the main aromatics, seasonings, and prep work for ${seed.title} so the cooking flows smoothly once the pan or pot is hot.`,
+      },
+      {
+        title: "Cook the aromatics",
+        detail:
+          seed.steps[1] ||
+          "Build the first layer of flavor patiently so the dish tastes rounded instead of rushed.",
+      },
+      {
+        title: "Add the core ingredients",
+        detail:
+          seed.steps[2] ||
+          "Introduce the main vegetables, protein elements, or grains in the order that supports the best texture.",
+      },
+      {
+        title: "Simmer or finish gently",
+        detail:
+          seed.steps[3] ||
+          "Cook until the sauce, broth, or pan mixture reaches the intended consistency and aroma.",
+      },
+      {
+        title: "Balance the final seasoning",
+        detail:
+          seed.steps[4] ||
+          "Taste carefully and adjust salt, acid, heat, or herbs so the finished dish feels vivid and complete.",
+      },
+      {
+        title: "Serve with the right finish",
+        detail:
+          seed.steps[5] ||
+          `Plate ${seed.title} while hot and finish with the garnish or accompaniment that gives it its signature character.`,
+      },
+    ],
+    cookingTips: seed.cookingTips,
+    storageTips: seed.storageTips,
+    healthBenefits: seed.healthBenefits,
+    faqs: seed.faqs,
+    reviews: [
+      {
+        name: "Priya",
+        rating: 5,
+        quote:
+          `This ${seed.cuisine.toLowerCase()} recipe felt detailed, approachable, and far more helpful than a short generic version.`,
+      },
+      {
+        name: "Daniel",
+        rating: 4,
+        quote:
+          `The timing and seasoning notes made ${seed.title} much easier to get right on the first try.`,
+      },
+    ],
+    relatedSlugs: seed.relatedSlugs,
+    tags: seed.tags,
+    trendingScore: seed.trendingScore,
+    publishedAt: seed.publishedAt,
+    updatedAt: seed.updatedAt,
+    history: seed.history,
+    internalLinks: [
+      {
+        label: `Browse more ${seed.category.toLowerCase()}`,
+        href: `/categories/${seed.category.toLowerCase().replace(/[^a-z]+/g, "-")}`,
+      },
+      {
+        label: `See more ${seed.cuisine} recipes`,
+        href: `/search?q=${encodeURIComponent(seed.cuisine)}`,
+      },
+    ],
+    videoPlan: {
+      title: `${seed.title} Short`,
+      duration: "PT35S",
+      hook: `Open with the most irresistible texture moment from ${seed.title}.`,
+      voiceover: [
+        `Start ${seed.title} by building a strong flavor base.`,
+        `Layer the core ingredients so the ${seed.cuisine.toLowerCase()} profile stays balanced and expressive.`,
+        `Finish with the garnish or final seasoning that makes the dish feel complete.`,
+      ],
+      scenePrompts: [
+        `Cinematic top-down shot of the key ingredients for ${seed.title} styled for a premium food magazine.`,
+        `Close-up of aromatics and spices cooking for ${seed.title}.`,
+        `Main pot or pan stage showing texture development in ${seed.title}.`,
+        `Final plated ${seed.title} with garnish and elegant service styling.`,
+      ],
+      thumbnail: "/images/videos/miso-butter-ramen-thumb.svg",
+    },
+    author: authorProfile,
+  };
+}
+
+const foundationRecipes: Recipe[] = [
   {
     id: "recipe_001",
     slug: "hyderabadi-veg-dum-biryani",
@@ -1036,16 +1273,489 @@ export const recipes: Recipe[] = [
   },
 ];
 
+const generatedWorldRecipes: Recipe[] = [
+  buildWorldRecipe(
+    {
+      slug: "thai-green-coconut-curry",
+      title: "Thai Green Coconut Curry",
+      cuisine: "Thai",
+      country: "Thailand",
+      category: "One-Pot Meals",
+      diet: ["vegetarian", "gluten-free"],
+      difficulty: "Easy",
+      prepMinutes: 20,
+      cookMinutes: 25,
+      servings: 4,
+      nutrition: { calories: 392, protein: "10 g", carbs: "28 g", fat: "27 g", fiber: "7 g", sugar: "9 g", sodium: "610 mg" },
+      heroImage: "/images/recipes/category-one-pot.svg",
+      imageAlt: "Thai green coconut curry in a bowl with herbs and vegetables.",
+      excerpt: "A fragrant Thai-style curry with coconut milk, herbs, vegetables, and layered gentle heat.",
+      description: "This Thai green coconut curry delivers bright herb flavor, creamy coconut richness, tender vegetables, and a balanced sweet-salty-heat profile that works beautifully for a quick but globally expressive dinner.",
+      history: "Green curry is admired for the way it balances fresh green aromatics with coconut richness. Home versions often emphasize flexibility, allowing cooks to adjust vegetables, heat level, and finishing herbs while still preserving the dish's signature brightness.",
+      tags: ["thai curry", "coconut curry", "vegetarian dinner", "world cuisine"],
+      ingredients: [{ amount: "2 tbsp", item: "green curry paste" }, { amount: "1 tbsp", item: "neutral oil" }, { amount: "1 can", item: "coconut milk" }, { amount: "1 cup", item: "vegetable stock" }, { amount: "2 cups", item: "mixed vegetables", notes: "bell pepper, broccoli, snap peas" }, { amount: "1 block", item: "firm tofu, cubed" }, { amount: "1 tbsp", item: "soy sauce or tamari" }, { amount: "1 tsp", item: "brown sugar" }, { amount: "1 tbsp", item: "lime juice" }, { amount: "1/4 cup", item: "Thai basil or cilantro" }],
+      steps: [
+        "Warm the oil and briefly fry the curry paste so its aroma blooms before any liquid goes in.",
+        "Add coconut milk and stock gradually, whisking until the base becomes smooth and fragrant.",
+        "Add tofu and vegetables in stages so the softer ingredients do not overcook.",
+        "Simmer gently until the curry thickens slightly and the vegetables are tender but still vibrant.",
+        "Balance with soy sauce, sugar, and lime so the finish tastes lively rather than flat.",
+        "Serve hot with jasmine rice and fresh basil for the classic final lift."
+      ],
+      cookingTips: ["Cook the curry paste in oil first for deeper flavor.", "Do not boil aggressively after adding coconut milk.", "Add lime at the end so the brightness stays fresh."],
+      storageTips: ["Refrigerate for up to 3 days.", "Add a splash of water or stock when reheating so the sauce loosens gracefully."],
+      healthBenefits: ["Coconut curry can feel satisfying without needing dairy.", "Mixed vegetables broaden the fiber and micronutrient profile.", "Tofu adds plant protein and helps the meal feel more complete."],
+      faqs: [{ question: "Can I make it spicier?", answer: "Yes. Add fresh green chile or a little more curry paste gradually so the herbal notes still stay balanced." }, { question: "Can I swap tofu?", answer: "Absolutely. Chickpeas, paneer, shrimp, or chicken all work if adjusted for cooking time." }, { question: "What goes best with it?", answer: "Jasmine rice is classic, but rice noodles or roti-style flatbreads also work well." }],
+      trendingScore: 91,
+      publishedAt: "2026-05-12T08:15:00.000Z",
+      updatedAt: "2026-05-15T11:40:00.000Z",
+      relatedSlugs: ["moroccan-lemon-olive-chickpea-tagine", "miso-butter-ramen"],
+    },
+    0
+  ),
+  buildWorldRecipe(
+    {
+      slug: "korean-bibimbap-bowl",
+      title: "Korean Bibimbap Bowl",
+      cuisine: "Korean",
+      country: "South Korea",
+      category: "Rice Dishes",
+      diet: ["vegetarian"],
+      difficulty: "Intermediate",
+      prepMinutes: 30,
+      cookMinutes: 20,
+      servings: 4,
+      nutrition: { calories: 448, protein: "14 g", carbs: "58 g", fat: "18 g", fiber: "8 g", sugar: "7 g", sodium: "700 mg" },
+      heroImage: "/images/recipes/category-rice-dishes.svg",
+      imageAlt: "Korean bibimbap bowl with rice, vegetables, egg, and chili sauce.",
+      excerpt: "A color-rich Korean rice bowl with seasoned vegetables, gochujang heat, and satisfying contrast.",
+      description: "This Korean-inspired bibimbap bowl combines rice, sesame-seasoned vegetables, a savory-spicy sauce, and layered textures that make every spoonful feel bright, hearty, and deeply satisfying.",
+      history: "Bibimbap is celebrated for its color, balance, and flexibility. It showcases how carefully seasoned components can become more than the sum of their parts when mixed at the table.",
+      tags: ["bibimbap", "korean rice bowl", "vegetable bowl", "gochujang"],
+      ingredients: [{ amount: "4 cups", item: "cooked rice" }, { amount: "2 cups", item: "spinach" }, { amount: "1 cup", item: "carrot, julienned" }, { amount: "1 cup", item: "mushrooms, sliced" }, { amount: "1 cup", item: "bean sprouts" }, { amount: "2 tbsp", item: "sesame oil" }, { amount: "2 tbsp", item: "gochujang" }, { amount: "1 tbsp", item: "soy sauce" }, { amount: "1 tsp", item: "rice vinegar" }, { amount: "4", item: "eggs", notes: "optional for serving" }],
+      steps: [
+        "Season each vegetable separately with salt, sesame oil, or soy so the bowl tastes intentional instead of generic.",
+        "Cook mushrooms until they brown lightly and lose excess moisture.",
+        "Blanch or saute the spinach and sprouts just until tender, then cool slightly so they keep their color.",
+        "Whisk a quick sauce with gochujang, soy sauce, vinegar, and a little sesame oil.",
+        "Build bowls over hot rice with vegetables arranged in sections for contrast and visual appeal.",
+        "Finish with sauce and optional egg, then mix thoroughly before eating."
+      ],
+      cookingTips: ["Seasoning each component separately is what gives bibimbap its depth.", "Keep the sauce concentrated because it spreads once mixed with rice.", "A hot bowl helps the final mix taste fuller and more cohesive."],
+      storageTips: ["Store vegetables and rice separately for cleaner leftovers.", "Add sauce only when serving to keep textures brighter."],
+      healthBenefits: ["A wide mix of vegetables improves color and micronutrient variety.", "Rice bowls can be balanced easily by adjusting protein and vegetables.", "Sesame and eggs add richness, helping the meal feel substantial."],
+      faqs: [{ question: "Can I make it vegan?", answer: "Yes. Skip the egg and use tofu or extra mushrooms for added substance." }, { question: "Is gochujang very spicy?", answer: "It varies by brand, but it is usually more savory-sweet than sharply hot when used in moderation." }, { question: "Can I use brown rice?", answer: "Yes. Brown rice works well if you want a nuttier base and more fiber." }],
+      trendingScore: 89,
+      publishedAt: "2026-05-12T10:30:00.000Z",
+      updatedAt: "2026-05-16T09:30:00.000Z",
+      relatedSlugs: ["hyderabadi-veg-dum-biryani", "mango-chili-tostadas"],
+    },
+    1
+  ),
+  buildWorldRecipe(
+    {
+      slug: "greek-lemon-herb-potatoes",
+      title: "Greek Lemon Herb Potatoes",
+      cuisine: "Greek",
+      country: "Greece",
+      category: "One-Pot Meals",
+      diet: ["vegan", "gluten-free"],
+      difficulty: "Easy",
+      prepMinutes: 15,
+      cookMinutes: 45,
+      servings: 4,
+      nutrition: { calories: 286, protein: "5 g", carbs: "39 g", fat: "13 g", fiber: "5 g", sugar: "3 g", sodium: "430 mg" },
+      heroImage: "/images/recipes/category-one-pot.svg",
+      imageAlt: "Greek roasted potatoes with lemon, oregano, and golden edges.",
+      excerpt: "Golden Greek-style potatoes with lemon, oregano, garlic, and a deeply savory roasting finish.",
+      description: "These Greek lemon herb potatoes roast until tender inside and deeply golden outside, soaking up olive oil, stock, garlic, and oregano in a way that makes them feel both rustic and restaurant-worthy.",
+      history: "Greek potato dishes are often defined by olive oil generosity, lemon brightness, and deeply savory baking liquids that reduce and cling to the potatoes as they finish roasting.",
+      tags: ["greek potatoes", "roasted potatoes", "mediterranean side", "lemon herb"],
+      ingredients: [{ amount: "2 lb", item: "potatoes, cut into wedges" }, { amount: "1/4 cup", item: "olive oil" }, { amount: "1/2 cup", item: "vegetable stock" }, { amount: "3 cloves", item: "garlic, minced" }, { amount: "1", item: "lemon", notes: "juice and zest" }, { amount: "1 tsp", item: "dried oregano" }, { amount: "1 tsp", item: "sea salt" }, { amount: "1/2 tsp", item: "black pepper" }, { amount: "2 tbsp", item: "parsley" }],
+      steps: [
+        "Toss the potato wedges with oil, garlic, oregano, salt, pepper, and lemon juice until evenly coated.",
+        "Arrange them in a roasting dish with stock so the potatoes can roast and absorb flavor at the same time.",
+        "Roast until the stock reduces and the edges begin to take on color.",
+        "Turn the potatoes once or twice so several surfaces can crisp properly.",
+        "Finish with lemon zest and parsley for a fresher top note.",
+        "Serve hot alongside grilled vegetables, salads, or Mediterranean mains."
+      ],
+      cookingTips: ["Do not overcrowd the pan or the potatoes will steam.", "Roasting liquid should reduce instead of remaining soupy.", "A final broil can help deepen the golden edges."],
+      storageTips: ["Refrigerate for up to 3 days.", "Reheat in the oven instead of the microwave for better texture."],
+      healthBenefits: ["Potatoes can be satisfying and filling when prepared with balanced fat and herbs.", "Olive oil and lemon keep the flavor vivid without heavy sauces.", "Pairs well with protein and salad for an easy balanced plate."],
+      faqs: [{ question: "Can I use sweet potatoes?", answer: "You can, but the flavor and roasting behavior will be sweeter and softer than the classic version." }, { question: "Why add stock?", answer: "It creates a savory roasting base that soaks into the potatoes before reducing." }, { question: "What herbs work best?", answer: "Oregano is most classic, but thyme and parsley also fit naturally." }],
+      trendingScore: 78,
+      publishedAt: "2026-05-12T12:00:00.000Z",
+      updatedAt: "2026-05-15T08:20:00.000Z",
+      relatedSlugs: ["moroccan-lemon-olive-chickpea-tagine", "pistachio-pesto-pasta"],
+    },
+    2
+  ),
+  buildWorldRecipe(
+    {
+      slug: "lebanese-mujadara",
+      title: "Lebanese Mujadara",
+      cuisine: "Lebanese",
+      country: "Lebanon",
+      category: "Rice Dishes",
+      diet: ["vegan"],
+      difficulty: "Easy",
+      prepMinutes: 15,
+      cookMinutes: 40,
+      servings: 5,
+      nutrition: { calories: 362, protein: "13 g", carbs: "56 g", fat: "9 g", fiber: "11 g", sugar: "4 g", sodium: "390 mg" },
+      heroImage: "/images/recipes/category-rice-dishes.svg",
+      imageAlt: "Lebanese mujadara with lentils, rice, and caramelized onions.",
+      excerpt: "A deeply comforting Lebanese lentil and rice dish crowned with sweet caramelized onions.",
+      description: "Lebanese mujadara brings together lentils, rice, warm spices, and deeply caramelized onions into a humble but elegant dish that proves simple pantry ingredients can create outstanding depth.",
+      history: "Mujadara is treasured across the Levant as a practical, nourishing dish built from grains, legumes, and onions. Its beauty lies in patience and balance rather than luxury ingredients.",
+      tags: ["mujadara", "lentils and rice", "lebanese food", "budget meal"],
+      ingredients: [{ amount: "1 cup", item: "brown or green lentils" }, { amount: "1 cup", item: "long-grain rice" }, { amount: "3", item: "large onions, thinly sliced" }, { amount: "3 tbsp", item: "olive oil" }, { amount: "1 tsp", item: "ground cumin" }, { amount: "1/2 tsp", item: "ground cinnamon" }, { amount: "3 cups", item: "water or stock" }, { amount: "1 tsp", item: "salt" }, { amount: "1/2 tsp", item: "black pepper" }],
+      steps: [
+        "Cook the lentils until partly tender before combining them with rice so both finish at the right texture.",
+        "Caramelize the onions slowly until richly golden and sweet, reserving some for the topping.",
+        "Add cumin and cinnamon to the pan briefly so the oil carries their aroma.",
+        "Combine rice, lentils, and liquid, then cook gently until both are tender and fluffy.",
+        "Rest the pot off the heat so the grains settle and absorb the last of the steam.",
+        "Serve topped generously with the reserved onions and a spoon of yogurt if desired."
+      ],
+      cookingTips: ["The onions should be deeply golden, not just lightly soft.", "Do not overcook the lentils before the rice is added.", "Resting the pot is important for a fluffier final texture."],
+      storageTips: ["Keeps well for 4 days refrigerated.", "Reheat with a small splash of water to keep it tender."],
+      healthBenefits: ["Lentils and rice together create a filling, fiber-rich meal.", "This dish is naturally budget-friendly and meal-prep friendly.", "Caramelized onions bring big flavor without processed sauces."],
+      faqs: [{ question: "Can I use basmati rice?", answer: "Yes, though the final texture will be slightly lighter and less earthy than with standard long-grain rice." }, { question: "What goes well with mujadara?", answer: "Cucumber yogurt, tomato salad, or pickled vegetables all pair beautifully." }, { question: "Can I freeze it?", answer: "Yes. Freeze in portions and reheat gently with a little water." }],
+      trendingScore: 83,
+      publishedAt: "2026-05-12T14:00:00.000Z",
+      updatedAt: "2026-05-16T06:50:00.000Z",
+      relatedSlugs: ["hyderabadi-veg-dum-biryani", "moroccan-lemon-olive-chickpea-tagine"],
+    },
+    3
+  ),
+  buildWorldRecipe(
+    {
+      slug: "chinese-garlic-sesame-noodles",
+      title: "Chinese Garlic Sesame Noodles",
+      cuisine: "Chinese",
+      country: "China",
+      category: "Pasta and Noodles",
+      diet: ["vegetarian"],
+      difficulty: "Easy",
+      prepMinutes: 15,
+      cookMinutes: 15,
+      servings: 4,
+      nutrition: { calories: 418, protein: "12 g", carbs: "54 g", fat: "18 g", fiber: "4 g", sugar: "5 g", sodium: "720 mg" },
+      heroImage: "/images/recipes/category-pasta.svg",
+      imageAlt: "Chinese-style garlic sesame noodles with scallions and chili.",
+      excerpt: "Fast glossy noodles with garlic, sesame, soy, and a satisfying savory finish.",
+      description: "These Chinese-style garlic sesame noodles are quick, glossy, and deeply satisfying, using pantry staples like soy sauce, sesame oil, garlic, and scallions to build a noodle bowl with major comfort appeal.",
+      history: "Sauced noodle dishes across Chinese home cooking often rely on simplicity, speed, and seasoning precision, proving that a short ingredient list can still deliver deep savory payoff.",
+      tags: ["sesame noodles", "garlic noodles", "chinese noodles", "quick dinner"],
+      ingredients: [{ amount: "12 oz", item: "wheat noodles" }, { amount: "2 tbsp", item: "soy sauce" }, { amount: "1 tbsp", item: "dark soy sauce" }, { amount: "1 tbsp", item: "sesame oil" }, { amount: "4 cloves", item: "garlic, minced" }, { amount: "1 tbsp", item: "rice vinegar" }, { amount: "1 tsp", item: "brown sugar" }, { amount: "2", item: "scallions, sliced" }, { amount: "1 tsp", item: "chili flakes or chili crisp" }],
+      steps: [
+        "Cook the noodles until tender but springy, then rinse lightly if needed to stop overcooking.",
+        "Mix soy sauces, sesame oil, vinegar, and sugar into a smooth sauce base.",
+        "Warm garlic gently in a little oil so it becomes fragrant without burning.",
+        "Toss the noodles with the sauce while still warm so they absorb flavor better.",
+        "Add scallions and chili to balance richness with freshness and heat.",
+        "Serve immediately or slightly warm with extra sesame or cucumber on the side."
+      ],
+      cookingTips: ["Reserve a little noodle water in case the sauce needs loosening.", "Do not brown the garlic too hard or it will taste bitter.", "Taste after tossing because different soy sauces vary in saltiness."],
+      storageTips: ["Best within 2 days refrigerated.", "Refresh leftovers with a spoon of hot water and a little sesame oil."],
+      healthBenefits: ["A quick noodle dish can still feel balanced when paired with vegetables or tofu.", "Garlic and scallions add strong aroma without needing rich dairy-based sauces.", "Easy to adapt with protein or greens."],
+      faqs: [{ question: "Can I add vegetables?", answer: "Yes. Bok choy, shredded cabbage, cucumber, or sauteed mushrooms work well." }, { question: "Are these spicy?", answer: "Only if you add chili. The base version is savory and nutty rather than hot." }, { question: "Can I make them cold?", answer: "Yes. This recipe also works as a chilled noodle salad." }],
+      trendingScore: 87,
+      publishedAt: "2026-05-12T16:00:00.000Z",
+      updatedAt: "2026-05-16T10:15:00.000Z",
+      relatedSlugs: ["miso-butter-ramen", "pistachio-pesto-pasta"],
+    },
+    4
+  ),
+  buildWorldRecipe(
+    {
+      slug: "spanish-saffron-vegetable-rice",
+      title: "Spanish Saffron Vegetable Rice",
+      cuisine: "Spanish",
+      country: "Spain",
+      category: "Rice Dishes",
+      diet: ["vegetarian", "gluten-free"],
+      difficulty: "Intermediate",
+      prepMinutes: 20,
+      cookMinutes: 35,
+      servings: 5,
+      nutrition: { calories: 401, protein: "10 g", carbs: "61 g", fat: "13 g", fiber: "6 g", sugar: "5 g", sodium: "560 mg" },
+      heroImage: "/images/recipes/category-rice-dishes.svg",
+      imageAlt: "Spanish-style saffron vegetable rice in a wide pan.",
+      excerpt: "A saffron-scented Spanish-inspired rice dish with vegetables, paprika warmth, and toasty pan flavor.",
+      description: "This Spanish-inspired saffron vegetable rice cooks in a wide pan for even grain texture, aromatic depth, and a subtle toasted finish that makes it feel festive without becoming difficult to execute.",
+      history: "Spanish rice dishes are often as much about pan management as ingredients. The shape of the pan, the control of heat, and the restraint after adding liquid all influence the final texture.",
+      tags: ["spanish rice", "saffron rice", "vegetable paella style", "one pan"],
+      ingredients: [{ amount: "2 tbsp", item: "olive oil" }, { amount: "1", item: "onion, chopped" }, { amount: "1", item: "red bell pepper, chopped" }, { amount: "3 cloves", item: "garlic, minced" }, { amount: "1 1/2 cups", item: "short or medium grain rice" }, { amount: "1 tsp", item: "smoked paprika" }, { amount: "1 pinch", item: "saffron" }, { amount: "3 cups", item: "vegetable stock" }, { amount: "1 cup", item: "peas and artichokes" }],
+      steps: [
+        "Cook onion and pepper until softened and sweet before adding garlic and spices.",
+        "Toast the rice briefly so the grains become glossy and better prepared to absorb flavor evenly.",
+        "Add paprika, saffron, and stock, then spread the rice into an even layer.",
+        "Simmer without stirring too much so the grains can cook uniformly and the base can lightly toast.",
+        "Add peas and artichokes toward the end to preserve their texture and color.",
+        "Rest the pan before serving so the rice settles and the aromatics finish blooming."
+      ],
+      cookingTips: ["A wide pan helps the rice cook more evenly.", "Resist over-stirring once the liquid goes in.", "Resting the pan is part of the final texture."],
+      storageTips: ["Refrigerate for up to 3 days.", "Reheat in a skillet with a splash of stock."],
+      healthBenefits: ["Rice dishes like this can absorb lots of vegetable flavor without becoming heavy.", "Peas and artichokes add fiber and variety.", "Olive oil and saffron help keep the dish fragrant rather than greasy."],
+      faqs: [{ question: "Can I use basmati?", answer: "You can, but medium-grain rice gives a more traditional and unified pan texture." }, { question: "Should I stir it a lot?", answer: "No. Too much stirring changes the texture and reduces the signature pan character." }, { question: "Can I add beans?", answer: "Yes, chickpeas or white beans work well for a more filling vegetarian version." }],
+      trendingScore: 84,
+      publishedAt: "2026-05-12T18:00:00.000Z",
+      updatedAt: "2026-05-16T13:00:00.000Z",
+      relatedSlugs: ["hyderabadi-veg-dum-biryani", "thai-green-coconut-curry"],
+    },
+    5
+  ),
+  buildWorldRecipe(
+    {
+      slug: "turkish-menemen-skillet",
+      title: "Turkish Menemen Skillet",
+      cuisine: "Turkish",
+      country: "Turkey",
+      category: "One-Pot Meals",
+      diet: ["vegetarian", "gluten-free"],
+      difficulty: "Easy",
+      prepMinutes: 10,
+      cookMinutes: 15,
+      servings: 3,
+      nutrition: { calories: 264, protein: "12 g", carbs: "11 g", fat: "18 g", fiber: "3 g", sugar: "7 g", sodium: "430 mg" },
+      heroImage: "/images/recipes/category-one-pot.svg",
+      imageAlt: "Turkish menemen skillet with tomatoes, peppers, and eggs.",
+      excerpt: "A Turkish breakfast skillet of tomatoes, peppers, eggs, and soft, savory spoonable texture.",
+      description: "This Turkish-style menemen skillet turns eggs, tomatoes, peppers, and olive oil into a soft, richly savory breakfast or light meal that tastes generous, bright, and highly comforting.",
+      history: "Menemen is beloved for its simplicity and immediacy. The dish depends on the quality of the tomato-pepper base and the soft finish of the eggs rather than heavy seasoning.",
+      tags: ["menemen", "turkish breakfast", "egg skillet", "tomato eggs"],
+      ingredients: [{ amount: "2 tbsp", item: "olive oil" }, { amount: "1", item: "green pepper, chopped" }, { amount: "2", item: "tomatoes, grated or chopped" }, { amount: "1 tbsp", item: "tomato paste" }, { amount: "4", item: "eggs" }, { amount: "1/2 tsp", item: "Aleppo pepper or chili flakes" }, { amount: "1/2 tsp", item: "salt" }, { amount: "2 tbsp", item: "parsley" }],
+      steps: [
+        "Soften the pepper in olive oil until it loses its raw edge but still keeps a little bite.",
+        "Add tomato and paste, then cook until the mixture thickens and tastes concentrated rather than watery.",
+        "Season with salt and gentle pepper heat so the base feels rounded before the eggs go in.",
+        "Crack the eggs into the sauce and stir lightly for a soft, custardy finish.",
+        "Stop cooking while the eggs are still slightly loose because residual heat continues the process.",
+        "Serve immediately with bread for scooping."
+      ],
+      cookingTips: ["Do not overcook the eggs.", "Cook the tomato base long enough to reduce properly.", "Use good bread because it is part of the eating experience."],
+      storageTips: ["Best eaten fresh.", "If needed, refrigerate briefly and reheat very gently."],
+      healthBenefits: ["Eggs make this skillet satisfying without much prep time.", "Tomatoes and peppers add freshness and color.", "Pairs well with salad for a light balanced meal."],
+      faqs: [{ question: "Can I add cheese?", answer: "Yes. Feta or Turkish white cheese can be crumbled in near the end." }, { question: "Should the eggs be fully set?", answer: "Traditionally they stay a little soft for a richer texture." }, { question: "Can I make it spicy?", answer: "Yes. Add more chili or a hot green pepper." }],
+      trendingScore: 77,
+      publishedAt: "2026-05-13T06:50:00.000Z",
+      updatedAt: "2026-05-16T15:00:00.000Z",
+      relatedSlugs: ["miso-butter-ramen", "greek-lemon-herb-potatoes"],
+    },
+    6
+  ),
+  buildWorldRecipe(
+    {
+      slug: "ethiopian-berbere-lentil-stew",
+      title: "Ethiopian Berbere Lentil Stew",
+      cuisine: "Ethiopian",
+      country: "Ethiopia",
+      category: "One-Pot Meals",
+      diet: ["vegan"],
+      difficulty: "Intermediate",
+      prepMinutes: 15,
+      cookMinutes: 35,
+      servings: 5,
+      nutrition: { calories: 318, protein: "16 g", carbs: "43 g", fat: "9 g", fiber: "14 g", sugar: "6 g", sodium: "470 mg" },
+      heroImage: "/images/recipes/category-one-pot.svg",
+      imageAlt: "Ethiopian-style red lentil stew with berbere spice.",
+      excerpt: "A warming Ethiopian-inspired lentil stew with berbere spice depth and deeply comforting texture.",
+      description: "This Ethiopian-inspired berbere lentil stew builds warmth, depth, and comforting thickness from onions, garlic, tomato, and spice, creating a deeply satisfying pot that tastes even better as it rests.",
+      history: "Lentil stews flavored with berbere are appreciated for their richness and warmth, offering a practical and flavorful way to turn pantry ingredients into communal comfort food.",
+      tags: ["ethiopian lentils", "berbere stew", "vegan stew", "red lentils"],
+      ingredients: [{ amount: "2 tbsp", item: "oil" }, { amount: "1", item: "onion, finely chopped" }, { amount: "3 cloves", item: "garlic, minced" }, { amount: "1 tbsp", item: "ginger, grated" }, { amount: "2 tbsp", item: "berbere spice" }, { amount: "1 tbsp", item: "tomato paste" }, { amount: "1 1/2 cups", item: "red lentils" }, { amount: "4 cups", item: "water or stock" }, { amount: "1 tsp", item: "salt" }],
+      steps: [
+        "Cook the onion slowly so it becomes sweet and forms a strong base.",
+        "Add garlic, ginger, berbere, and tomato paste so the spices open up in the oil.",
+        "Stir in the lentils and liquid, then simmer gently until the lentils begin to break down.",
+        "Cook until the stew reaches a thick, spoonable consistency.",
+        "Adjust salt and, if needed, a small splash of water for texture balance.",
+        "Serve hot with flatbread, rice, or sauteed greens."
+      ],
+      cookingTips: ["Let the onions soften well before adding spices.", "Red lentils thicken quickly, so watch the liquid level.", "This stew often tastes better after a short rest."],
+      storageTips: ["Refrigerate for 4 days.", "Freeze in portions for up to 2 months."],
+      healthBenefits: ["Red lentils provide plant protein and fiber.", "One-pot lentil dishes are practical for meal prep.", "Strong spice flavor helps keep the dish satisfying without heavy fats."],
+      faqs: [{ question: "Can I reduce the spice?", answer: "Yes. Start with less berbere and add more after tasting." }, { question: "What should I serve with it?", answer: "Flatbread, rice, or greens all work well." }, { question: "Can I use brown lentils?", answer: "Yes, but the cooking time and final texture will be different." }],
+      trendingScore: 81,
+      publishedAt: "2026-05-13T09:30:00.000Z",
+      updatedAt: "2026-05-16T12:10:00.000Z",
+      relatedSlugs: ["lebanese-mujadara", "moroccan-lemon-olive-chickpea-tagine"],
+    },
+    7
+  ),
+  buildWorldRecipe(
+    {
+      slug: "brazilian-coconut-pepper-stew",
+      title: "Brazilian Coconut Pepper Stew",
+      cuisine: "Brazilian",
+      country: "Brazil",
+      category: "One-Pot Meals",
+      diet: ["vegetarian", "gluten-free"],
+      difficulty: "Easy",
+      prepMinutes: 15,
+      cookMinutes: 25,
+      servings: 4,
+      nutrition: { calories: 344, protein: "9 g", carbs: "21 g", fat: "25 g", fiber: "5 g", sugar: "7 g", sodium: "520 mg" },
+      heroImage: "/images/recipes/category-one-pot.svg",
+      imageAlt: "Brazilian-style coconut pepper stew with herbs.",
+      excerpt: "A Brazilian-inspired coconut and pepper stew with bright herbs and silky texture.",
+      description: "This Brazilian-inspired coconut pepper stew combines sweet peppers, tomatoes, herbs, and coconut richness into a colorful pot that feels sunny, generous, and deeply spoonable.",
+      history: "Brazilian coastal stews often emphasize bright color, coconut richness, peppers, and fresh herb finishes, creating dishes that feel both celebratory and comforting.",
+      tags: ["brazilian stew", "coconut stew", "pepper stew", "vegetarian comfort"],
+      ingredients: [{ amount: "1 tbsp", item: "olive oil" }, { amount: "1", item: "onion, sliced" }, { amount: "2", item: "bell peppers, sliced" }, { amount: "2 cloves", item: "garlic" }, { amount: "1 cup", item: "crushed tomatoes" }, { amount: "1 can", item: "coconut milk" }, { amount: "1 tbsp", item: "lime juice" }, { amount: "1/4 cup", item: "cilantro" }, { amount: "1 tsp", item: "paprika" }],
+      steps: [
+        "Soften onion and peppers until they smell sweet and begin to relax.",
+        "Add garlic and paprika briefly so the aromatics open without burning.",
+        "Pour in tomatoes and coconut milk, then simmer until the stew turns silky and lightly thick.",
+        "Season carefully so the coconut richness does not mute the savory profile.",
+        "Finish with lime and cilantro for a fresher final lift.",
+        "Serve with rice or bread to absorb the sauce."
+      ],
+      cookingTips: ["Do not skip the acidic finish because it sharpens the coconut base.", "A little extra chili can be added if you want more warmth.", "Serve immediately while the sauce feels glossy and fresh."],
+      storageTips: ["Refrigerate for up to 3 days.", "Reheat gently so the coconut sauce stays smooth."],
+      healthBenefits: ["Pepper-heavy stews add color and vegetable variety.", "Coconut creates richness without dairy.", "Pairs well with rice for an easy filling meal."],
+      faqs: [{ question: "Can I add beans?", answer: "Yes. White beans or black-eyed peas fit nicely." }, { question: "Can I add seafood?", answer: "Yes, but adjust the cooking time and add it near the end." }, { question: "What rice works best?", answer: "Plain white rice is the easiest and most traditional-feeling pairing." }],
+      trendingScore: 80,
+      publishedAt: "2026-05-13T12:20:00.000Z",
+      updatedAt: "2026-05-16T16:10:00.000Z",
+      relatedSlugs: ["thai-green-coconut-curry", "mango-chili-tostadas"],
+    },
+    8
+  ),
+  buildWorldRecipe(
+    {
+      slug: "vietnamese-herb-pho-chay",
+      title: "Vietnamese Herb Pho Chay",
+      cuisine: "Vietnamese",
+      country: "Vietnam",
+      category: "Soups and Bowls",
+      diet: ["vegan", "gluten-free"],
+      difficulty: "Intermediate",
+      prepMinutes: 25,
+      cookMinutes: 35,
+      servings: 4,
+      nutrition: { calories: 298, protein: "8 g", carbs: "49 g", fat: "7 g", fiber: "4 g", sugar: "6 g", sodium: "690 mg" },
+      heroImage: "/images/recipes/category-soups-bowls.svg",
+      imageAlt: "Vietnamese-style vegetarian pho with herbs and noodles.",
+      excerpt: "A Vietnamese-inspired herb-rich noodle soup with fragrant broth and fresh garnish contrast.",
+      description: "This Vietnamese-inspired pho chay uses aromatic broth-building ingredients, rice noodles, mushrooms, and lots of fresh herbs to create a bowl that feels light, fragrant, and deeply restorative.",
+      history: "Vegetarian pho variations rely on broth clarity, aromatic layering, and fresh garnish abundance. The final bowl depends as much on finishing herbs as on the simmered stock itself.",
+      tags: ["pho chay", "vietnamese soup", "rice noodle soup", "vegan broth"],
+      ingredients: [{ amount: "1", item: "onion, halved" }, { amount: "1 piece", item: "ginger, sliced" }, { amount: "5 cups", item: "vegetable stock" }, { amount: "1 tbsp", item: "soy sauce" }, { amount: "1 star", item: "anise" }, { amount: "8 oz", item: "rice noodles" }, { amount: "1 cup", item: "mushrooms, sliced" }, { amount: "1 cup", item: "bean sprouts" }, { amount: "1/2 cup", item: "basil, cilantro, and mint" }, { amount: "1", item: "lime" }],
+      steps: [
+        "Char or deeply brown the onion and ginger for a more aromatic broth base.",
+        "Simmer the stock with soy and warm spices until fragrant but still clean-tasting.",
+        "Cook the noodles separately so the broth stays clear and elegant.",
+        "Add mushrooms near the end so they stay tender rather than rubbery.",
+        "Build each bowl with noodles first, then pour over the hot broth.",
+        "Finish generously with herbs, sprouts, and lime."
+      ],
+      cookingTips: ["Separate noodle cooking helps the broth stay clean.", "Do not overdo the spices or the broth can become heavy.", "Fresh herbs are part of the structure, not just garnish."],
+      storageTips: ["Store broth, noodles, and herbs separately.", "Broth keeps well for 3 days refrigerated."],
+      healthBenefits: ["Herb-rich broths can feel light but still satisfying.", "Rice noodles and mushrooms keep the bowl approachable for many diets.", "Fresh herbs and lime add brightness without heaviness."],
+      faqs: [{ question: "Can I add tofu?", answer: "Yes. Crisped tofu works very well in this soup." }, { question: "What mushrooms are best?", answer: "Shiitake and oyster mushrooms both add nice depth." }, { question: "Can I make it ahead?", answer: "Yes, especially if you keep the noodles and garnishes separate." }],
+      trendingScore: 86,
+      publishedAt: "2026-05-13T15:00:00.000Z",
+      updatedAt: "2026-05-16T17:00:00.000Z",
+      relatedSlugs: ["miso-butter-ramen", "thai-green-coconut-curry"],
+    },
+    9
+  ),
+  buildWorldRecipe(
+    {
+      slug: "german-mushroom-spaetzle-skillet",
+      title: "German Mushroom Spaetzle Skillet",
+      cuisine: "German",
+      country: "Germany",
+      category: "Pasta and Noodles",
+      diet: ["vegetarian"],
+      difficulty: "Intermediate",
+      prepMinutes: 20,
+      cookMinutes: 20,
+      servings: 4,
+      nutrition: { calories: 476, protein: "16 g", carbs: "51 g", fat: "23 g", fiber: "4 g", sugar: "4 g", sodium: "540 mg" },
+      heroImage: "/images/recipes/category-pasta.svg",
+      imageAlt: "German-style spaetzle skillet with mushrooms and herbs.",
+      excerpt: "A hearty German-inspired skillet of spaetzle, mushrooms, butter, and savory onion depth.",
+      description: "This German-inspired mushroom spaetzle skillet brings together tender noodles, caramelized onions, browned mushrooms, and buttery savory depth for a dish that feels cozy, practical, and deeply satisfying.",
+      history: "Spaetzle dishes are beloved for their rustic comfort and flexibility. Pan-finishing with mushrooms and onions is a natural way to turn the noodles into a complete meal.",
+      tags: ["spaetzle", "german comfort food", "mushroom skillet", "buttery noodles"],
+      ingredients: [{ amount: "14 oz", item: "spaetzle" }, { amount: "1 tbsp", item: "butter" }, { amount: "1 tbsp", item: "oil" }, { amount: "1", item: "onion, sliced" }, { amount: "10 oz", item: "mushrooms, sliced" }, { amount: "1/3 cup", item: "vegetable stock" }, { amount: "1/4 cup", item: "parsley" }, { amount: "salt and pepper", item: "to taste" }],
+      steps: [
+        "Brown the onion slowly so it becomes sweet and deeply savory.",
+        "Cook the mushrooms until their moisture cooks off and the edges begin to color.",
+        "Warm the spaetzle separately if needed so it can join the skillet without breaking.",
+        "Add stock and butter to create a light glossy coating rather than a heavy sauce.",
+        "Toss until everything feels cohesive and lightly shiny.",
+        "Finish with parsley and pepper for freshness."
+      ],
+      cookingTips: ["Browned mushrooms are essential for depth.", "Do not drown the skillet in stock or the noodles lose their texture.", "Pepper and parsley give the heavy flavors some lift."],
+      storageTips: ["Refrigerate for 3 days.", "Reheat in a skillet for best texture."],
+      healthBenefits: ["Mushrooms add savory depth without relying only on cheese or cream.", "A skillet meal like this can be balanced with a sharp salad.", "Good for cool-weather comfort without complicated technique."],
+      faqs: [{ question: "Can I use egg noodles?", answer: "Yes, though spaetzle gives the most authentic chewy-soft texture." }, { question: "Can I add cheese?", answer: "Absolutely. Gruyere-style cheeses work nicely in small amounts." }, { question: "What herbs work well?", answer: "Parsley and chives are both classic partners." }],
+      trendingScore: 76,
+      publishedAt: "2026-05-13T18:10:00.000Z",
+      updatedAt: "2026-05-16T18:20:00.000Z",
+      relatedSlugs: ["pistachio-pesto-pasta", "chinese-garlic-sesame-noodles"],
+    },
+    10
+  ),
+  buildWorldRecipe(
+    {
+      slug: "french-ratatouille-bake",
+      title: "French Ratatouille Bake",
+      cuisine: "French",
+      country: "France",
+      category: "One-Pot Meals",
+      diet: ["vegan", "gluten-free"],
+      difficulty: "Intermediate",
+      prepMinutes: 25,
+      cookMinutes: 45,
+      servings: 5,
+      nutrition: { calories: 232, protein: "5 g", carbs: "19 g", fat: "15 g", fiber: "6 g", sugar: "10 g", sodium: "360 mg" },
+      heroImage: "/images/recipes/category-one-pot.svg",
+      imageAlt: "French ratatouille bake with layered vegetables and herbs.",
+      excerpt: "A French-inspired vegetable bake with tomato depth, olive oil, and elegant herb finish.",
+      description: "This French-inspired ratatouille bake layers eggplant, zucchini, tomatoes, peppers, and herbs into a dish that feels rustic, polished, and naturally beautiful on the table.",
+      history: "Ratatouille is celebrated for transforming peak-season vegetables into something richer and more cohesive through patient cooking and olive oil-led flavor.",
+      tags: ["ratatouille", "french vegetables", "baked vegetables", "vegan dinner"],
+      ingredients: [{ amount: "1", item: "eggplant, sliced" }, { amount: "2", item: "zucchini, sliced" }, { amount: "3", item: "tomatoes, sliced" }, { amount: "1", item: "bell pepper, diced" }, { amount: "1", item: "onion, diced" }, { amount: "3 cloves", item: "garlic" }, { amount: "3 tbsp", item: "olive oil" }, { amount: "1 tsp", item: "thyme or herbes de Provence" }, { amount: "salt and pepper", item: "to taste" }],
+      steps: [
+        "Cook onion, pepper, and garlic into a lightly sweet base layer.",
+        "Spread the tomato-rich base into a baking dish.",
+        "Layer sliced vegetables tightly so they cook evenly and look elegant.",
+        "Brush with olive oil and herbs, then bake until tender and lightly concentrated.",
+        "Rest briefly before serving so the juices settle.",
+        "Serve warm with bread, grains, or grilled protein."
+      ],
+      cookingTips: ["Salt eggplant lightly if it seems very watery.", "Tight layering improves both appearance and texture.", "Resting helps the bake slice more cleanly."],
+      storageTips: ["Keeps well for 4 days refrigerated.", "Also tastes good at room temperature the next day."],
+      healthBenefits: ["Vegetable-baked dishes add variety and color with relatively light ingredients.", "Olive oil and herbs create fullness without heavy sauces.", "Pairs well with beans or grains for a balanced meal."],
+      faqs: [{ question: "Can I make it ahead?", answer: "Yes. It reheats very well and can even taste better after resting overnight." }, { question: "Do I need cheese?", answer: "No. The classic vegetable profile stands well on its own." }, { question: "Can I serve it cold?", answer: "Yes, especially as part of a summer spread." }],
+      trendingScore: 82,
+      publishedAt: "2026-05-14T09:10:00.000Z",
+      updatedAt: "2026-05-16T19:20:00.000Z",
+      relatedSlugs: ["greek-lemon-herb-potatoes", "moroccan-lemon-olive-chickpea-tagine"],
+    },
+    11
+  ),
+];
+
+export const recipes: Recipe[] = [...foundationRecipes, ...generatedWorldRecipes];
+
 export const trendingRecipes = [...recipes]
   .sort((left, right) => right.trendingScore - left.trendingScore)
-  .slice(0, 4);
+  .slice(0, 8);
 
 export const latestRecipes = [...recipes]
   .sort(
     (left, right) =>
       new Date(right.publishedAt).getTime() - new Date(left.publishedAt).getTime()
   )
-  .slice(0, 4);
+  .slice(0, 8);
 
 export const videoRecipes = recipes.map((recipe) => ({
   slug: recipe.slug,

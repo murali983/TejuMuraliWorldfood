@@ -17,7 +17,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Trending recipes"
             title="The recipes readers are opening, saving, and cooking right now."
-            description="These high-interest recipes combine rich culinary storytelling, strong search intent, and useful kitchen detail that supports both readers and long-term SEO performance."
+            description="These high-interest recipes now span a wider set of world cuisines so the homepage feels like a global food destination instead of a tiny sample grid."
             action={
               <Link
                 href="/trending"
@@ -42,9 +42,18 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Latest recipes"
               title="Fresh long-form posts with strong editorial depth."
-              description="Every sample post includes narrative context, nutrition details, FAQs, internal linking, and structured markup prepared for recipe-rich search surfaces."
+              description="The newest posts cover a broader mix of cuisines, regions, and meal styles while preserving long-form helpfulness and structured recipe detail."
+              action={
+                <Link
+                  href="/recipes"
+                  className="rounded-full border px-5 py-3 text-sm"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  Browse all recipes
+                </Link>
+              }
             />
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               {latestRecipes.map((recipe) => (
                 <RecipeCard key={recipe.slug} recipe={recipe} />
               ))}
@@ -157,9 +166,9 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-6 rounded-[1.75rem] border p-6" style={{ borderColor: "var(--border)" }}>
-              <p className="font-semibold">Current sample library</p>
+              <p className="font-semibold">Current global recipe library</p>
               <p className="mt-2 text-sm leading-7" style={{ color: "var(--muted)" }}>
-                {recipes.length} detailed world recipes are included as launch content, each structured as a template for larger-scale automated publishing pipelines.
+                {recipes.length} world recipes are now included in launch content, covering a much wider set of cuisines while still acting as a foundation for larger automated publishing pipelines.
               </p>
             </div>
           </div>
