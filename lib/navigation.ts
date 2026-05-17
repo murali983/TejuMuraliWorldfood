@@ -2,6 +2,7 @@ import type { NavItem } from "@/lib/types";
 
 export const mainNavigation: NavItem[] = [
   { href: "/", label: "Home" },
+  { href: "/india", label: "India" },
   { href: "/recipes", label: "Recipes" },
   { href: "/trending", label: "Trending" },
   { href: "/latest-posts", label: "Latest" },

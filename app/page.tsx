@@ -1,7 +1,14 @@
 import Link from "next/link";
 
+import {
+  indianFeaturedStates,
+  totalIndianCatalogTarget,
+  totalIndianSeededDishCount,
+  totalIndianStateCount,
+} from "@/data/indian-catalog";
 import { categories, cuisines, latestRecipes, recipes, trendingRecipes, videoRecipes } from "@/data/recipes";
 import { HeroSection } from "@/components/hero-section";
+import { IndiaStateCard } from "@/components/india-state-card";
 import { NewsletterCard } from "@/components/newsletter-card";
 import { RecipeCard } from "@/components/recipe-card";
 import { SectionHeading } from "@/components/section-heading";
@@ -11,6 +18,64 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+
+      <section className="py-10">
+        <div className="shell grid gap-6 lg:grid-cols-[1fr_0.96fr]">
+          <div className="panel-strong rounded-[2rem] p-6 md:p-8">
+            <p className="eyebrow mb-3">India spotlight</p>
+            <h2 className="font-[family-name:var(--font-display)] text-4xl">
+              A state-wise Indian food atlas is now part of the platform.
+            </h2>
+            <p className="mt-4 text-sm leading-7 md:text-base" style={{ color: "var(--muted)" }}>
+              The site no longer feels limited to a tiny recipe sample. Andhra Pradesh, Telangana,
+              Tamil Nadu, Kerala, Karnataka, Maharashtra, and every other Indian state and union
+              territory now have their own content hubs, giving the platform a much larger and more
+              realistic path toward 2,000+ Indian dishes.
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                { label: "State and UT hubs", value: totalIndianStateCount.toLocaleString() },
+                { label: "Seeded Indian dishes", value: totalIndianSeededDishCount.toLocaleString() },
+                { label: "Catalog target", value: totalIndianCatalogTarget.toLocaleString() },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-[1.5rem] border p-5"
+                  style={{ borderColor: "var(--border)", background: "rgba(255,255,255,0.08)" }}
+                >
+                  <p className="text-xs uppercase tracking-[0.22em]" style={{ color: "var(--accent)" }}>
+                    {item.label}
+                  </p>
+                  <p className="mt-3 font-[family-name:var(--font-display)] text-4xl">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/india"
+                className="rounded-full border px-5 py-3 text-sm"
+                style={{ borderColor: "var(--border)" }}
+              >
+                Explore India atlas
+              </Link>
+              <Link
+                href="/recipes/hyderabadi-veg-dum-biryani"
+                className="rounded-full border px-5 py-3 text-sm"
+                style={{ borderColor: "var(--border)" }}
+              >
+                Open Telangana recipe
+              </Link>
+            </div>
+          </div>
+          <div className="grid gap-4">
+            {indianFeaturedStates.slice(0, 3).map((state) => (
+              <IndiaStateCard key={state.slug} state={state} compact />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-10">
         <div className="shell space-y-6">
@@ -169,6 +234,9 @@ export default function HomePage() {
               <p className="font-semibold">Current global recipe library</p>
               <p className="mt-2 text-sm leading-7" style={{ color: "var(--muted)" }}>
                 {recipes.length} world recipes are now included in launch content, covering a much wider set of cuisines while still acting as a foundation for larger automated publishing pipelines.
+              </p>
+              <p className="mt-3 text-sm leading-7" style={{ color: "var(--muted)" }}>
+                Alongside those full recipe pages, the new India atlas already maps {totalIndianSeededDishCount.toLocaleString()} Indian dishes across {totalIndianStateCount.toLocaleString()} state and union territory hubs, with a structured expansion path toward {totalIndianCatalogTarget.toLocaleString()} dishes.
               </p>
             </div>
           </div>

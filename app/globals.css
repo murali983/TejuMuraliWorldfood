@@ -5,10 +5,10 @@
   --color-foreground: #1f1712;
   --color-surface: #fffaf5;
   --color-surface-strong: #f0e4d3;
-  --color-muted: #705a48;
-  --color-border: rgba(103, 75, 54, 0.18);
-  --color-accent: #c97833;
-  --color-accent-strong: #7d4922;
+  --color-muted: #4d3728;
+  --color-border: rgba(103, 75, 54, 0.26);
+  --color-accent: #a95420;
+  --color-accent-strong: #6f3917;
   --color-dark: #130f0c;
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -17,12 +17,12 @@
 :root {
   --background: #f7f0e7;
   --foreground: #1f1712;
-  --surface: rgba(255, 250, 245, 0.94);
-  --surface-strong: rgba(241, 228, 211, 0.94);
-  --border: rgba(95, 67, 45, 0.18);
-  --muted: #6f5847;
-  --accent: #c97833;
-  --accent-strong: #7d4922;
+  --surface: rgba(255, 250, 245, 0.98);
+  --surface-strong: rgba(241, 228, 211, 0.98);
+  --border: rgba(95, 67, 45, 0.26);
+  --muted: #4d3728;
+  --accent: #a95420;
+  --accent-strong: #6f3917;
   --shadow-lg: 0 24px 80px rgba(17, 12, 9, 0.12);
   --shadow-md: 0 18px 42px rgba(17, 12, 9, 0.08);
 }
@@ -30,12 +30,12 @@
 .dark {
   --background: #0f0c0a;
   --foreground: #f7efe7;
-  --surface: rgba(28, 22, 18, 0.92);
-  --surface-strong: rgba(44, 33, 27, 0.92);
-  --border: rgba(255, 243, 228, 0.12);
-  --muted: #d9c3ad;
-  --accent: #dd8d49;
-  --accent-strong: #f3c489;
+  --surface: rgba(31, 24, 20, 0.96);
+  --surface-strong: rgba(45, 35, 29, 0.96);
+  --border: rgba(255, 243, 228, 0.22);
+  --muted: #e7d3bf;
+  --accent: #f0a766;
+  --accent-strong: #ffd1a1;
   --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 18px 42px rgba(0, 0, 0, 0.28);
 }
@@ -57,12 +57,31 @@ body {
     var(--background);
   color: var(--foreground);
   font-family: var(--font-body), Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--foreground);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+strong,
+b {
+  color: var(--foreground);
+  font-weight: 700;
 }
 
 img {
@@ -92,11 +111,20 @@ img {
   box-shadow: var(--shadow-lg);
 }
 
+.dark .panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent), var(--surface);
+}
+
+.dark .panel-strong {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent), var(--surface-strong);
+}
+
 .eyebrow {
   font-size: 0.75rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--accent);
+  font-weight: 800;
 }
 
 .page-fade {
@@ -129,6 +157,23 @@ img {
 .rich-copy li {
   margin-bottom: 0.65rem;
   line-height: 1.65;
+}
+
+input,
+select,
+textarea {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+button {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+::placeholder {
+  color: color-mix(in srgb, var(--muted) 84%, transparent);
+  opacity: 1;
 }
 
 .shine-border {

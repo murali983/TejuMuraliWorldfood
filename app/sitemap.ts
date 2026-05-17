@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { indianStateCuisines } from "@/data/indian-catalog";
 import { categories, recipes } from "@/data/recipes";
 import { siteUrl } from "@/lib/site";
 
@@ -15,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/cookie-policy",
     "/affiliate-disclosure",
     "/copyright-notice",
+    "/india",
     "/categories",
     "/recipes",
     "/trending",
@@ -44,5 +46,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...pages, ...recipePages, ...categoryPages];
+  const indiaPages = indianStateCuisines.map((state) => ({
+    url: `${siteUrl}/india/${state.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...pages, ...recipePages, ...categoryPages, ...indiaPages];
 }

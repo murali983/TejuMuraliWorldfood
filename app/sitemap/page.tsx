@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { indianStateCuisines } from "@/data/indian-catalog";
 import { categories, recipes } from "@/data/recipes";
 import { PageHero } from "@/components/page-hero";
 import { buildMetadata } from "@/lib/seo";
@@ -8,6 +9,7 @@ const topPages = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
+  { href: "/india", label: "India Atlas" },
   { href: "/recipes", label: "Recipes" },
   { href: "/trending", label: "Trending" },
   { href: "/latest-posts", label: "Latest Posts" },
@@ -31,7 +33,7 @@ export default function SitemapPage() {
         description="This HTML sitemap supports human navigation while the XML sitemap powers search engine discovery."
       />
       <section className="pb-16">
-        <div className="shell grid gap-6 lg:grid-cols-3">
+        <div className="shell grid gap-6 xl:grid-cols-4">
           <div className="panel rounded-[2rem] p-6">
             <h2 className="font-[family-name:var(--font-display)] text-3xl">
               Core pages
@@ -62,6 +64,23 @@ export default function SitemapPage() {
                   style={{ borderColor: "var(--border)" }}
                 >
                   {category.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="panel rounded-[2rem] p-6">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl">
+              India atlas
+            </h2>
+            <div className="mt-4 grid gap-3">
+              {indianStateCuisines.map((state) => (
+                <Link
+                  key={state.slug}
+                  href={`/india/${state.slug}`}
+                  className="rounded-2xl border px-4 py-3 text-sm"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  {state.title}
                 </Link>
               ))}
             </div>

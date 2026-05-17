@@ -26,7 +26,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 transition hover:-translate-y-0.5"
+                className="rounded-full px-4 py-2 text-[0.95rem] font-semibold transition hover:-translate-y-0.5"
                 style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
               >
                 {item.label}

@@ -150,3 +150,23 @@ export type SearchFilters = {
   maxTime?: number;
   difficulty?: RecipeDifficulty;
 };
+
+export type IndianDishStatus = "live" | "catalogued" | "planned";
+
+export type IndianDishCatalogItem = {
+  name: string;
+  category: string;
+  description: string;
+  status: IndianDishStatus;
+  recipeSlug?: string;
+};
+
+export type IndianStateCuisine = {
+  slug: string;
+  title: string;
+  region: string;
+  description: string;
+  signatureNotes: string[];
+  catalogTarget: number;
+  dishes: IndianDishCatalogItem[];
+};

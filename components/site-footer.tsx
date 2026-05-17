@@ -38,7 +38,7 @@ export function SiteFooter() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-3xl border px-5 py-4 text-sm transition hover:-translate-y-0.5"
+              className="rounded-3xl border px-5 py-4 text-sm font-semibold transition hover:-translate-y-0.5"
               style={{ borderColor: "var(--border)", background: "var(--surface)" }}
             >
               {item.label}
