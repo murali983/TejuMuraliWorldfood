@@ -170,3 +170,18 @@ export type IndianStateCuisine = {
   catalogTarget: number;
   dishes: IndianDishCatalogItem[];
 };
+
+export type IndianDishArchiveEntry = {
+  id: string;
+  slug: string;
+  title: string;
+  baseDish: string;
+  stateSlug: string;
+  stateTitle: string;
+  region: string;
+  category: string;
+  status: IndianDishStatus;
+  angle: string;
+  description: string;
+  recipeSlug?: string;
+};

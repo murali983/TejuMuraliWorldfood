@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/affiliate-disclosure",
     "/copyright-notice",
     "/india",
+    "/india/dishes",
     "/categories",
     "/recipes",
     "/trending",

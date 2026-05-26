@@ -1,13 +1,16 @@
 import Link from "next/link";
 
 import {
+  featuredIndianArchiveEntries,
   indianFeaturedStates,
   indianStateCuisines,
+  totalIndianArchiveEntryCount,
   totalIndianCatalogTarget,
   totalIndianLiveDishCount,
   totalIndianSeededDishCount,
   totalIndianStateCount,
 } from "@/data/indian-catalog";
+import { IndianArchiveCard } from "@/components/indian-archive-card";
 import { BreadcrumbTrail } from "@/components/breadcrumb-trail";
 import { IndiaStateCard } from "@/components/india-state-card";
 import { PageHero } from "@/components/page-hero";
@@ -74,19 +77,19 @@ export default function IndiaPage() {
               note: "Complete India-wide browsing structure",
             },
             {
-              label: "Seeded Indian dishes",
+              label: "Visible archive entries",
+              value: totalIndianArchiveEntryCount.toLocaleString(),
+              note: "Public Indian dish entries visible on the site",
+            },
+            {
+              label: "Foundation dishes",
               value: totalIndianSeededDishCount.toLocaleString(),
-              note: "Representative dishes already catalogued",
+              note: "Representative dishes anchoring the archive",
             },
             {
               label: "Detailed live Indian recipes",
               value: totalIndianLiveDishCount.toLocaleString(),
               note: "Long-form pages published with full structure",
-            },
-            {
-              label: "Expansion target",
-              value: totalIndianCatalogTarget.toLocaleString(),
-              note: "Scale-ready roadmap beyond 2,000 dishes",
             },
           ].map((stat) => (
             <div key={stat.label} className="panel rounded-[2rem] p-6">
@@ -120,8 +123,8 @@ export default function IndiaPage() {
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {[
                 "State-first navigation for Andhra, Telangana, Tamil Nadu, Kerala, Karnataka, and the rest of India",
-                "Representative dish catalog seeded now, with room to expand each state toward 56+ recipes",
-                "Long-form recipe publishing can now grow in phases without making the site feel empty",
+                "A visible 2,500+ Indian archive now makes the platform feel substantial instead of tiny",
+                `State hubs are now structured to scale toward ${totalIndianCatalogTarget.toLocaleString()} Indian archive entries`,
               ].map((item) => (
                 <div
                   key={item}
@@ -141,6 +144,13 @@ export default function IndiaPage() {
                 Open live Telangana recipe
               </Link>
               <Link
+                href="/india/dishes"
+                className="rounded-full border px-5 py-3 text-sm"
+                style={{ borderColor: "var(--border)" }}
+              >
+                Browse 2500+ Indian entries
+              </Link>
+              <Link
                 href="/recipes"
                 className="rounded-full border px-5 py-3 text-sm"
                 style={{ borderColor: "var(--border)" }}
@@ -152,6 +162,30 @@ export default function IndiaPage() {
           <div className="grid gap-4">
             {indianFeaturedStates.map((state) => (
               <IndiaStateCard key={state.slug} state={state} compact />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10">
+        <div className="shell space-y-6">
+          <SectionHeading
+            eyebrow="Visible archive preview"
+            title="The India section now shows many more dishes than a tiny sample."
+            description="These cards are taken from the larger Indian dish archive so visitors immediately see breadth across states, categories, and recipe angles."
+            action={
+              <Link
+                href="/india/dishes"
+                className="rounded-full border px-5 py-3 text-sm"
+                style={{ borderColor: "var(--border)" }}
+              >
+                Open the full archive
+              </Link>
+            }
+          />
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {featuredIndianArchiveEntries.slice(0, 6).map((entry) => (
+              <IndianArchiveCard key={entry.id} entry={entry} />
             ))}
           </div>
         </div>

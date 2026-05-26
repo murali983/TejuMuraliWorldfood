@@ -10,6 +10,7 @@ const topPages = [
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
   { href: "/india", label: "India Atlas" },
+  { href: "/india/dishes", label: "Indian Dishes Archive" },
   { href: "/recipes", label: "Recipes" },
   { href: "/trending", label: "Trending" },
   { href: "/latest-posts", label: "Latest Posts" },

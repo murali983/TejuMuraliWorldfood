@@ -3,6 +3,7 @@ import type { NavItem } from "@/lib/types";
 export const mainNavigation: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/india", label: "India" },
+  { href: "/india/dishes", label: "Indian Dishes" },
   { href: "/recipes", label: "Recipes" },
   { href: "/trending", label: "Trending" },
   { href: "/latest-posts", label: "Latest" },

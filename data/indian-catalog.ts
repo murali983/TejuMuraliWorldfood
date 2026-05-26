@@ -1,4 +1,5 @@
 import type {
+  IndianDishArchiveEntry,
   IndianDishCatalogItem,
   IndianDishStatus,
   IndianStateCuisine,
@@ -19,7 +20,7 @@ function buildState({
   description,
   signatureNotes,
   dishes,
-  catalogTarget = 56,
+  catalogTarget = 70,
 }: {
   slug: string;
   title: string;
@@ -46,6 +47,243 @@ function buildState({
       })
     ),
   };
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+const archiveAnglesByCategory: Record<string, string[]> = {
+  Breakfast: [
+    "Classic Breakfast",
+    "Homestyle Plate",
+    "Street-Style Morning",
+    "Festival Breakfast",
+    "Family Brunch",
+    "Tiffin Center Style",
+    "Weekend Special",
+    "Quick Morning Version",
+    "Protein-Friendly Style",
+    "Travel-Friendly Plate",
+    "Temple-Influenced Take",
+    "Spicy Breakfast Cut",
+    "Soft Texture Version",
+    "Heritage Kitchen Style",
+  ],
+  "Rice Dish": [
+    "Classic Rice Plate",
+    "Homestyle Lunch",
+    "Temple-Style Batch",
+    "Festival Rice Version",
+    "Family Feast Pot",
+    "Travel Pack Style",
+    "Sunday Special",
+    "Wedding Menu Take",
+    "One-Pot Shortcut",
+    "Traditional Clay Pot Style",
+    "Spicy Masala Finish",
+    "Vegetable-Rich Version",
+    "Ghee-Layered Plate",
+    "Heritage Feast Style",
+  ],
+  "Main Course": [
+    "Classic Curry Version",
+    "Homestyle Pot",
+    "Sunday Special",
+    "Village-Style Batch",
+    "Wedding Feast Style",
+    "Family Dinner Version",
+    "Restaurant-Style Take",
+    "Festival Main",
+    "Traditional House Style",
+    "Slow-Cooked Version",
+    "Spicy Masala Finish",
+    "Mild Family Style",
+    "Clay Pot Version",
+    "Heritage Signature",
+  ],
+  Snack: [
+    "Classic Snack",
+    "Street Cart Style",
+    "Tea-Time Batch",
+    "Festival Snack Plate",
+    "Crunchy Version",
+    "Soft Bite Version",
+    "Family Sharing Plate",
+    "Evening Tiffin Style",
+    "Travel Snack Version",
+    "Party Platter Style",
+    "Spicy Chatpata Finish",
+    "Homestyle Batch",
+    "Traditional Vendor Style",
+    "Heritage Snack",
+  ],
+  "Street Food": [
+    "Classic Street Plate",
+    "Old Bazaar Style",
+    "Crowd-Favorite Version",
+    "Evening Market Style",
+    "Festival Street Batch",
+    "Loaded Topping Version",
+    "Family Sharing Plate",
+    "Travel Lane Style",
+    "Spicy Vendor Finish",
+    "Weekend Craving Version",
+    "Homestyle Street Remix",
+    "Quick Counter Style",
+    "City Special Plate",
+    "Heritage Street Classic",
+  ],
+  Dessert: [
+    "Classic Sweet",
+    "Festival Dessert",
+    "Temple-Style Sweet",
+    "Celebration Batch",
+    "Rich Ghee Version",
+    "Mini-Bite Format",
+    "Wedding Sweet Style",
+    "Gift Box Version",
+    "Royal Dessert Take",
+    "Homestyle Sweet Batch",
+    "Travel-Friendly Sweet",
+    "Slow-Cooked Heritage Style",
+    "No-Frills Traditional Version",
+    "Signature Celebration Sweet",
+  ],
+  Bread: [
+    "Classic Bread",
+    "Homestyle Flatbread",
+    "Breakfast Bread Plate",
+    "Festival Bread Version",
+    "Travel-Friendly Bread",
+    "Ghee-Roasted Style",
+    "Stuffed Variation",
+    "Family Meal Bread",
+    "Restaurant-Style Bread",
+    "Tandoor-Style Finish",
+    "Village Kitchen Version",
+    "Soft Texture Cut",
+    "Crisp Edge Version",
+    "Heritage Bread Style",
+  ],
+  Beverage: [
+    "Classic Beverage",
+    "Summer Cooler Style",
+    "Festival Drink",
+    "Breakfast Companion",
+    "Street Stall Version",
+    "Family Serving Batch",
+    "Royal Drink Style",
+    "Travel Flask Version",
+    "Chilled Serving Style",
+    "Warm Comfort Version",
+    "Celebration Pour",
+    "Temple-Inspired Serving",
+    "Traditional Household Style",
+    "Heritage Drink Profile",
+  ],
+  Condiment: [
+    "Classic Condiment",
+    "Homestyle Chutney Batch",
+    "Spicy Table Version",
+    "Festival Meal Companion",
+    "Travel Jar Style",
+    "Stone-Ground Version",
+    "Family Meal Batch",
+    "Breakfast Side Style",
+    "Wedding Thali Accent",
+    "Lunch Plate Companion",
+    "Rustic Texture Finish",
+    "Fine-Grind Version",
+    "Traditional Pantry Style",
+    "Heritage Condiment",
+  ],
+  Seafood: [
+    "Classic Coastal Version",
+    "Homestyle Curry Pot",
+    "Spicy Fisherman Style",
+    "Family Lunch Plate",
+    "Festival Seafood Main",
+    "Coconut-Rich Version",
+    "Tawa Finish Style",
+    "Clay Pot Seafood Batch",
+    "Sunday Special",
+    "Restaurant-Style Plate",
+    "Beachside Take",
+    "Travel Meal Style",
+    "Traditional Harbor Version",
+    "Heritage Seafood Signature",
+  ],
+  "Side Dish": [
+    "Classic Side",
+    "Homestyle Bowl",
+    "Festival Side Dish",
+    "Everyday Plate Companion",
+    "Lunchbox Side",
+    "Spicy Side Version",
+    "Family Meal Batch",
+    "Quick Weekday Side",
+    "Traditional Side Plate",
+    "Rustic House Style",
+    "Mild Family Option",
+    "Herb-Forward Version",
+    "Village Meal Side",
+    "Heritage Side Dish",
+  ],
+  Staple: [
+    "Classic Staple",
+    "Everyday Meal Base",
+    "Homestyle Pot",
+    "Festival Meal Base",
+    "Travel-Friendly Serving",
+    "Family Table Version",
+    "Breakfast Staple Style",
+    "Dinner Companion Version",
+    "Village Kitchen Batch",
+    "Traditional Comfort Version",
+    "Mild Family Style",
+    "High-Energy Serving",
+    "Simple Heritage Format",
+    "Signature Staple Version",
+  ],
+  "Noodle Soup": [
+    "Classic Broth Bowl",
+    "Homestyle Soup Pot",
+    "Cold Weather Version",
+    "Family Dinner Bowl",
+    "Street Stall Style",
+    "Festival Warm Bowl",
+    "Hearty Protein Version",
+    "Vegetable-Forward Bowl",
+    "Traditional Soup Service",
+    "Travel Comfort Bowl",
+    "Mild Family Broth",
+    "Spiced Broth Version",
+    "Mountain Kitchen Style",
+    "Heritage Noodle Bowl",
+  ],
+};
+
+function getArchiveAngles(category: string) {
+  return archiveAnglesByCategory[category] ?? [
+    "Classic Version",
+    "Homestyle Version",
+    "Festival Version",
+    "Family Style",
+    "Traditional Take",
+    "Weekend Special",
+    "Travel-Friendly Style",
+    "Restaurant-Style Finish",
+    "Village Kitchen Style",
+    "Celebration Plate",
+    "Simple Everyday Version",
+    "Spiced Signature Version",
+    "Heritage Format",
+    "Featured Archive Entry",
+  ];
 }
 
 export const indianStateCuisines: IndianStateCuisine[] = [
@@ -613,6 +851,47 @@ export const totalIndianLiveDishCount = indianStateCuisines.reduce(
   (sum, state) => sum + state.dishes.filter((dish) => dish.status === "live").length,
   0
 );
+
+export const indianDishArchive: IndianDishArchiveEntry[] = indianStateCuisines.flatMap((state) =>
+  state.dishes.flatMap((dish, dishIndex) =>
+    getArchiveAngles(dish.category).map((angle, angleIndex) => ({
+      id: `${state.slug}-${dishIndex + 1}-${angleIndex + 1}`,
+      slug: `${state.slug}-${slugify(dish.name)}-${slugify(angle)}`,
+      title: `${dish.name} | ${angle}`,
+      baseDish: dish.name,
+      stateSlug: state.slug,
+      stateTitle: state.title,
+      region: state.region,
+      category: dish.category,
+      status:
+        dish.recipeSlug && angleIndex === 0
+          ? "live"
+          : angleIndex < 8
+            ? "catalogued"
+            : "planned",
+      angle,
+      description: `${angle} take on ${dish.name} from ${state.title}, grouped under the ${dish.category.toLowerCase()} archive so the India library can scale beyond sample content.`,
+      recipeSlug: dish.recipeSlug && angleIndex === 0 ? dish.recipeSlug : undefined,
+    }))
+  )
+);
+
+export const totalIndianArchiveEntryCount = indianDishArchive.length;
+
+export const featuredIndianArchiveEntries = indianDishArchive.filter((entry) =>
+  [
+    "andhra-pradesh",
+    "telangana",
+    "tamil-nadu",
+    "kerala",
+    "karnataka",
+    "maharashtra",
+  ].includes(entry.stateSlug)
+).slice(0, 24);
+
+export const indianArchiveCategories = Array.from(
+  new Set(indianDishArchive.map((entry) => entry.category))
+).sort();
 
 export const indianFeaturedStates = indianStateCuisines.filter((state) =>
   [

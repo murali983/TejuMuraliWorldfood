@@ -1,13 +1,16 @@
 import Link from "next/link";
 
 import {
+  featuredIndianArchiveEntries,
   indianFeaturedStates,
+  totalIndianArchiveEntryCount,
   totalIndianCatalogTarget,
   totalIndianSeededDishCount,
   totalIndianStateCount,
 } from "@/data/indian-catalog";
 import { categories, cuisines, latestRecipes, recipes, trendingRecipes, videoRecipes } from "@/data/recipes";
 import { HeroSection } from "@/components/hero-section";
+import { IndianArchiveCard } from "@/components/indian-archive-card";
 import { IndiaStateCard } from "@/components/india-state-card";
 import { NewsletterCard } from "@/components/newsletter-card";
 import { RecipeCard } from "@/components/recipe-card";
@@ -35,8 +38,8 @@ export default function HomePage() {
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {[
                 { label: "State and UT hubs", value: totalIndianStateCount.toLocaleString() },
-                { label: "Seeded Indian dishes", value: totalIndianSeededDishCount.toLocaleString() },
-                { label: "Catalog target", value: totalIndianCatalogTarget.toLocaleString() },
+                { label: "Visible archive entries", value: totalIndianArchiveEntryCount.toLocaleString() },
+                { label: "Foundation dishes", value: totalIndianSeededDishCount.toLocaleString() },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -61,6 +64,13 @@ export default function HomePage() {
                 Explore India atlas
               </Link>
               <Link
+                href="/india/dishes"
+                className="rounded-full border px-5 py-3 text-sm"
+                style={{ borderColor: "var(--border)" }}
+              >
+                View 2500+ Indian entries
+              </Link>
+              <Link
                 href="/recipes/hyderabadi-veg-dum-biryani"
                 className="rounded-full border px-5 py-3 text-sm"
                 style={{ borderColor: "var(--border)" }}
@@ -72,6 +82,30 @@ export default function HomePage() {
           <div className="grid gap-4">
             {indianFeaturedStates.slice(0, 3).map((state) => (
               <IndiaStateCard key={state.slug} state={state} compact />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10">
+        <div className="shell space-y-6">
+          <SectionHeading
+            eyebrow="Indian dish archive"
+            title="A larger India-only library is now visible on the site."
+            description={`The platform now exposes ${totalIndianArchiveEntryCount.toLocaleString()} Indian archive entries so visitors do not see only four or five dishes and leave with the impression that the site is empty.`}
+            action={
+              <Link
+                href="/india/dishes"
+                className="rounded-full border px-5 py-3 text-sm"
+                style={{ borderColor: "var(--border)" }}
+              >
+                Browse the archive
+              </Link>
+            }
+          />
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {featuredIndianArchiveEntries.slice(0, 6).map((entry) => (
+              <IndianArchiveCard key={entry.id} entry={entry} />
             ))}
           </div>
         </div>
@@ -236,7 +270,7 @@ export default function HomePage() {
                 {recipes.length} world recipes are now included in launch content, covering a much wider set of cuisines while still acting as a foundation for larger automated publishing pipelines.
               </p>
               <p className="mt-3 text-sm leading-7" style={{ color: "var(--muted)" }}>
-                Alongside those full recipe pages, the new India atlas already maps {totalIndianSeededDishCount.toLocaleString()} Indian dishes across {totalIndianStateCount.toLocaleString()} state and union territory hubs, with a structured expansion path toward {totalIndianCatalogTarget.toLocaleString()} dishes.
+                Alongside those full recipe pages, the new India atlas now exposes {totalIndianArchiveEntryCount.toLocaleString()} visible Indian archive entries across {totalIndianStateCount.toLocaleString()} state and union territory hubs, with a structured expansion path toward {totalIndianCatalogTarget.toLocaleString()} entries.
               </p>
             </div>
           </div>
