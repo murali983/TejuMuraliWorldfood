@@ -1,5 +1,6 @@
+import { indianDishArchive } from "@/data/indian-catalog";
 import { recipes } from "@/data/recipes";
-import type { Recipe, SearchFilters } from "@/lib/types";
+import type { IndianDishArchiveEntry, Recipe, SearchFilters } from "@/lib/types";
 
 function tokenize(value: string) {
   return value
@@ -103,4 +104,57 @@ export function searchRecipes(query: string, explicitFilters?: SearchFilters) {
     .filter((entry) => entry.score > 0)
     .sort((left, right) => right.score - left.score)
     .map((entry) => entry.recipe);
+}
+
+function indianArchiveSearchScore(entry: IndianDishArchiveEntry, query: string) {
+  const tokens = tokenize(query);
+  let score = 0;
+  const searchable = [
+    entry.title,
+    entry.baseDish,
+    entry.stateTitle,
+    entry.region,
+    entry.category,
+    entry.angle,
+    entry.description,
+    "Indian",
+    "India",
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  for (const token of tokens) {
+    if (searchable.includes(token)) {
+      score += entry.title.toLowerCase().includes(token) ? 12 : 5;
+      if (entry.baseDish.toLowerCase().includes(token)) {
+        score += 5;
+      }
+      if (entry.stateTitle.toLowerCase().includes(token)) {
+        score += 4;
+      }
+    }
+  }
+
+  if (/\bindia|indian\b/.test(query.toLowerCase())) {
+    score += 8;
+  }
+
+  if (entry.status === "live") {
+    score += 6;
+  } else if (entry.status === "catalogued") {
+    score += 3;
+  }
+
+  return score;
+}
+
+export function searchIndianArchive(query: string) {
+  return indianDishArchive
+    .map((entry) => ({
+      entry,
+      score: indianArchiveSearchScore(entry, query),
+    }))
+    .filter((item) => item.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .map((item) => item.entry);
 }
