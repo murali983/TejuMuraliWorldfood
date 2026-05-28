@@ -180,8 +180,24 @@ export type IndianDishArchiveEntry = {
   stateTitle: string;
   region: string;
   category: string;
+  diet: "Veg" | "Non-Veg";
   status: IndianDishStatus;
   angle: string;
   description: string;
   recipeSlug?: string;
+};
+
+export type IndianBrowseCategory = {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+export type IndianRegionShowcase = {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  states: string[];
 };

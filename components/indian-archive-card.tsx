@@ -38,19 +38,29 @@ export function IndianArchiveCard({
       </p>
       <div className="mt-5 flex flex-wrap gap-3">
         <Link
-          href={entry.recipeSlug ? `/recipes/${entry.recipeSlug}` : `/india/${entry.stateSlug}`}
+          href={`/india/dishes/${entry.slug}`}
           className="rounded-full border px-4 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
           style={{ borderColor: "var(--border)" }}
         >
-          {entry.recipeSlug ? "Open full recipe" : "Open state hub"}
+          Open recipe page
         </Link>
-        <Link
-          href={`/search?q=${encodeURIComponent(entry.baseDish)}`}
-          className="rounded-full border px-4 py-3 text-sm transition hover:-translate-y-0.5"
-          style={{ borderColor: "var(--border)" }}
-        >
-          Search similar dishes
-        </Link>
+        {entry.recipeSlug ? (
+          <Link
+            href={`/recipes/${entry.recipeSlug}`}
+            className="rounded-full border px-4 py-3 text-sm transition hover:-translate-y-0.5"
+            style={{ borderColor: "var(--border)" }}
+          >
+            Open long-form recipe
+          </Link>
+        ) : (
+          <Link
+            href={`/states/${entry.stateSlug}`}
+            className="rounded-full border px-4 py-3 text-sm transition hover:-translate-y-0.5"
+            style={{ borderColor: "var(--border)" }}
+          >
+            Open state hub
+          </Link>
+        )}
       </div>
     </article>
   );

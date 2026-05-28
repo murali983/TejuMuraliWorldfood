@@ -2,13 +2,12 @@ import type { NavItem } from "@/lib/types";
 
 export const mainNavigation: NavItem[] = [
   { href: "/", label: "Home" },
-  { href: "/india", label: "India" },
-  { href: "/india/dishes", label: "Indian Dishes" },
-  { href: "/recipes", label: "Recipes" },
-  { href: "/trending", label: "Trending" },
-  { href: "/latest-posts", label: "Latest" },
-  { href: "/video-recipes", label: "Video Recipes" },
+  { href: "/states", label: "Indian States" },
   { href: "/categories", label: "Categories" },
+  { href: "/categories/veg-recipes", label: "Veg Recipes" },
+  { href: "/categories/non-veg-recipes", label: "Non-Veg Recipes" },
+  { href: "/categories/street-food", label: "Street Food" },
+  { href: "/categories/desserts", label: "Desserts" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

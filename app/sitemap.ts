@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
-import { indianStateCuisines } from "@/data/indian-catalog";
+import { indianDishArchive, indianStateCuisines } from "@/data/indian-catalog";
+import { indianBrowseCategories } from "@/data/indian-explore";
 import { categories, recipes } from "@/data/recipes";
 import { siteUrl } from "@/lib/site";
 
@@ -18,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/copyright-notice",
     "/india",
     "/india/dishes",
+    "/states",
     "/categories",
     "/recipes",
     "/trending",
@@ -47,6 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  const indianCategoryPages = indianBrowseCategories.map((category) => ({
+    url: `${siteUrl}/categories/${category.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.78,
+  }));
+
   const indiaPages = indianStateCuisines.map((state) => ({
     url: `${siteUrl}/india/${state.slug}`,
     lastModified: new Date(),
@@ -54,5 +63,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...pages, ...recipePages, ...categoryPages, ...indiaPages];
+  const statePages = indianStateCuisines.map((state) => ({
+    url: `${siteUrl}/states/${state.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.82,
+  }));
+
+  const archivePages = indianDishArchive.map((entry) => ({
+    url: `${siteUrl}/india/dishes/${entry.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.72,
+  }));
+
+  return [
+    ...pages,
+    ...recipePages,
+    ...categoryPages,
+    ...indianCategoryPages,
+    ...indiaPages,
+    ...statePages,
+    ...archivePages,
+  ];
 }

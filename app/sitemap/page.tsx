@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 import { indianStateCuisines } from "@/data/indian-catalog";
-import { categories, recipes } from "@/data/recipes";
+import { indianBrowseCategories } from "@/data/indian-explore";
+import { recipes } from "@/data/recipes";
 import { PageHero } from "@/components/page-hero";
 import { buildMetadata } from "@/lib/seo";
 
@@ -11,6 +12,7 @@ const topPages = [
   { href: "/contact", label: "Contact Us" },
   { href: "/india", label: "India Atlas" },
   { href: "/india/dishes", label: "Indian Dishes Archive" },
+  { href: "/states", label: "Indian States" },
   { href: "/recipes", label: "Recipes" },
   { href: "/trending", label: "Trending" },
   { href: "/latest-posts", label: "Latest Posts" },
@@ -57,7 +59,7 @@ export default function SitemapPage() {
               Categories
             </h2>
             <div className="mt-4 grid gap-3">
-              {categories.map((category) => (
+              {indianBrowseCategories.map((category) => (
                 <Link
                   key={category.slug}
                   href={`/categories/${category.slug}`}

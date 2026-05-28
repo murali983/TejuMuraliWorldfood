@@ -45,7 +45,7 @@ const stateListSchema = {
 export const metadata = buildMetadata({
   title: "Indian Food Atlas",
   description:
-    "Explore Indian food state by state, from Andhra Pradesh and Telangana to every state and union territory, with a scalable roadmap toward 2,000+ dishes.",
+    "Explore Indian food state by state, from Andhra Pradesh and Telangana to every state and union territory, with a scalable roadmap toward 5,000+ dishes.",
   path: "/india",
   keywords: [
     "Indian foods",
@@ -65,7 +65,7 @@ export default function IndiaPage() {
       <PageHero
         eyebrow="India Food Atlas"
         title="Every Indian state and union territory now has its own food hub."
-        description="This launch turns the site into a true Indian food discovery platform: Andhra and Telangana are included, all states and union territories are mapped, and the catalog foundation is structured to grow past 2,000 dishes without publishing thin low-value pages."
+        description="This launch turns the site into a true Indian food discovery platform: Andhra and Telangana are included, all states and union territories are mapped, and the catalog foundation is structured to grow past 5,000 dishes without publishing thin low-value pages."
       />
 
       <section className="pb-10">
@@ -148,7 +148,7 @@ export default function IndiaPage() {
                 className="rounded-full border px-5 py-3 text-sm"
                 style={{ borderColor: "var(--border)" }}
               >
-                Browse 2500+ Indian entries
+                Browse 5000+ Indian entries
               </Link>
               <Link
                 href="/recipes"

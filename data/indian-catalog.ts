@@ -20,7 +20,7 @@ function buildState({
   description,
   signatureNotes,
   dishes,
-  catalogTarget = 70,
+  catalogTarget = 140,
 }: {
   slug: string;
   title: string;
@@ -55,6 +55,29 @@ function slugify(value: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
+
+function isNonVegDish(name: string) {
+  return /(chicken|mutton|fish|prawn|egg|beef|pork|duck|meat|kebab|gosht|haleem|biryani|pulusu)/i.test(
+    name
+  );
+}
+
+const archiveUniversalAngles = [
+  "Chef Special Version",
+  "Daily Meal Format",
+  "Lunch Box Friendly",
+  "Beginner-Friendly Method",
+  "Authentic Family Recipe",
+  "Traditional Festival Plate",
+  "Homemade Comfort Style",
+  "Regional Classic Edition",
+  "Large Batch Serving",
+  "Party Menu Variation",
+  "Royal Feast Style",
+  "Light Weekday Version",
+  "Spice-Forward Rendition",
+  "Signature House Style",
+];
 
 const archiveAnglesByCategory: Record<string, string[]> = {
   Breakfast: [
@@ -268,7 +291,8 @@ const archiveAnglesByCategory: Record<string, string[]> = {
 };
 
 function getArchiveAngles(category: string) {
-  return archiveAnglesByCategory[category] ?? [
+  const specific =
+    archiveAnglesByCategory[category] ?? [
     "Classic Version",
     "Homestyle Version",
     "Festival Version",
@@ -284,6 +308,8 @@ function getArchiveAngles(category: string) {
     "Heritage Format",
     "Featured Archive Entry",
   ];
+
+  return [...specific, ...archiveUniversalAngles];
 }
 
 export const indianStateCuisines: IndianStateCuisine[] = [
@@ -863,10 +889,11 @@ export const indianDishArchive: IndianDishArchiveEntry[] = indianStateCuisines.f
       stateTitle: state.title,
       region: state.region,
       category: dish.category,
+      diet: isNonVegDish(dish.name) || dish.category === "Seafood" ? "Non-Veg" : "Veg",
       status:
         dish.recipeSlug && angleIndex === 0
           ? "live"
-          : angleIndex < 8
+          : angleIndex < 16
             ? "catalogued"
             : "planned",
       angle,
@@ -906,4 +933,24 @@ export const indianFeaturedStates = indianStateCuisines.filter((state) =>
 
 export function findIndianStateCuisineBySlug(slug: string) {
   return indianStateCuisines.find((state) => state.slug === slug);
+}
+
+export function findIndianArchiveEntryBySlug(slug: string) {
+  return indianDishArchive.find((entry) => entry.slug === slug);
+}
+
+export function getRelatedIndianArchiveEntries(slug: string, limit = 6) {
+  const current = findIndianArchiveEntryBySlug(slug);
+
+  if (!current) {
+    return [];
+  }
+
+  return indianDishArchive
+    .filter(
+      (entry) =>
+        entry.slug !== slug &&
+        (entry.stateSlug === current.stateSlug || entry.category === current.category)
+    )
+    .slice(0, limit);
 }

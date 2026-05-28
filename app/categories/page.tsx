@@ -1,12 +1,12 @@
-import { categories } from "@/data/recipes";
+import { indianBrowseCategories } from "@/data/indian-explore";
+import { IndianCategoryCard } from "@/components/indian-category-card";
 import { PageHero } from "@/components/page-hero";
 import { buildMetadata } from "@/lib/seo";
-import Link from "next/link";
 
 export const metadata = buildMetadata({
   title: "Categories",
   description:
-    "Browse Tejaswi Murali World Foods by category, from rice dishes and soups to street food and desserts.",
+    "Browse Indian recipes by category, including veg recipes, non-veg recipes, breakfast, street food, desserts, curries, rice dishes, and beverages.",
   path: "/categories",
 });
 
@@ -15,25 +15,13 @@ export default function CategoriesPage() {
     <>
       <PageHero
         eyebrow="Categories"
-        title="Browse recipes by course, format, and cooking style."
-        description="Organized category hubs make it easy for readers to explore related dishes while strengthening topical authority and internal linking."
+        title="Browse Indian recipes by category."
+        description="Category-wise browsing is now focused on how readers actually search for Indian food: veg, non-veg, breakfast, curries, rice, snacks, desserts, drinks, and street food."
       />
       <section className="pb-16">
         <div className="shell grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {categories.map((category) => (
-            <Link
-              key={category.slug}
-              href={`/categories/${category.slug}`}
-              className="panel rounded-[2rem] p-6 transition hover:-translate-y-1"
-            >
-              <p className="eyebrow mb-3">{category.title}</p>
-              <p className="font-[family-name:var(--font-display)] text-3xl">
-                {category.title}
-              </p>
-              <p className="mt-4 text-sm leading-7" style={{ color: "var(--muted)" }}>
-                {category.description}
-              </p>
-            </Link>
+          {indianBrowseCategories.map((category) => (
+            <IndianCategoryCard key={category.slug} category={category} />
           ))}
         </div>
       </section>

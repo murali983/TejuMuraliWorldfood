@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { categories, latestRecipes, trendingRecipes } from "@/data/recipes";
+import { indianBrowseCategories } from "@/data/indian-explore";
+import { latestRecipes, trendingRecipes } from "@/data/recipes";
 import { SearchBar } from "@/components/search-bar";
 
 export function HeroSection() {
@@ -22,19 +23,42 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/15 to-transparent" />
           <div className="grid gap-8 xl:grid-cols-[1fr_0.92fr]">
             <div className="relative z-10 space-y-6">
-              <p className="eyebrow">Michelin-Inspired Editorial Experience</p>
+              <p className="eyebrow">Indian Food Discovery Platform</p>
               <h1 className="font-[family-name:var(--font-display)] text-5xl leading-tight md:text-7xl">
-                World-class recipes from every table worth celebrating.
+                Explore 5,000+ Indian food ideas across states, regions, and categories.
               </h1>
               <p className="max-w-2xl text-base leading-8 md:text-lg" style={{ color: "var(--muted)" }}>
-                Tejaswi Murali World Foods is built as a premium global recipe publication with detailed instructions, structured SEO, responsible AI workflows, and content quality gates designed to avoid thin or repetitive pages.
+                Tejaswi Murali World Foods is now structured around Indian food discovery: state-wise browsing, category-wise navigation, searchable archive entries, and detailed recipe pages designed for stronger SEO and a much larger public library feel.
               </p>
-              <SearchBar />
+              <SearchBar placeholder="Find your favorite Indian recipe..." />
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/states"
+                  className="rounded-full border px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
+                  style={{ borderColor: "var(--border)", background: "rgba(255,255,255,0.12)" }}
+                >
+                  Explore by State
+                </Link>
+                <Link
+                  href="/categories"
+                  className="rounded-full border px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
+                  style={{ borderColor: "var(--border)", background: "rgba(255,255,255,0.12)" }}
+                >
+                  Explore by Category
+                </Link>
+                <Link
+                  href="/india/dishes"
+                  className="rounded-full border px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
+                  style={{ borderColor: "var(--border)", background: "rgba(255,255,255,0.12)" }}
+                >
+                  Browse 5000 Dishes
+                </Link>
+              </div>
               <div className="grid gap-3 sm:grid-cols-3">
                 {[
-                  "50 AI-assisted recipe drafts daily",
-                  "Human editorial quality scoring",
-                  "Schema-rich search-ready publishing",
+                  "State-wise Indian food hubs",
+                  "Category-wise quick discovery",
+                  "Search-ready archive and recipe pages",
                 ].map((item) => (
                   <div
                     key={item}
@@ -65,11 +89,11 @@ export function HeroSection() {
                   <p className="text-sm leading-7 text-white/80">{feature.excerpt}</p>
                   <Link
                     href={`/recipes/${feature.slug}`}
-                    className="inline-flex rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:-translate-y-0.5"
-                  >
-                    Read the full recipe
-                  </Link>
-                </div>
+                  className="inline-flex rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:-translate-y-0.5"
+                >
+                  Read the full recipe
+                </Link>
+              </div>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {latestRecipes.slice(0, 2).map((recipe) => (
@@ -94,9 +118,9 @@ export function HeroSection() {
         </div>
         <aside className="grid gap-6">
           <div className="panel rounded-[2rem] p-6">
-            <p className="eyebrow mb-3">Popular Cuisines</p>
+            <p className="eyebrow mb-3">Popular Indian searches</p>
             <div className="grid gap-3">
-              {["Indian", "Japanese", "Italian", "Mexican", "Moroccan", "Portuguese"].map((cuisine) => (
+              {["Hyderabadi Biryani", "Dosa", "Puttu", "Chole Bhature", "Misal Pav", "Gongura Pachadi"].map((cuisine) => (
                 <Link
                   key={cuisine}
                   href={`/search?q=${encodeURIComponent(cuisine)}`}
@@ -112,7 +136,7 @@ export function HeroSection() {
           <div className="panel rounded-[2rem] p-6">
             <p className="eyebrow mb-3">Browse By Category</p>
             <div className="grid gap-3">
-              {categories.slice(0, 4).map((category) => (
+              {indianBrowseCategories.slice(0, 4).map((category) => (
                 <Link
                   key={category.slug}
                   href={`/categories/${category.slug}`}

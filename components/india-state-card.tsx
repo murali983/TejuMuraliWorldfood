@@ -11,16 +11,18 @@ const statusCopy = {
 export function IndiaStateCard({
   state,
   compact = false,
+  hrefBase = "/india",
 }: {
   state: IndianStateCuisine;
   compact?: boolean;
+  hrefBase?: string;
 }) {
   const liveCount = state.dishes.filter((dish) => dish.status === "live").length;
   const highlightedDishes = compact ? state.dishes.slice(0, 3) : state.dishes.slice(0, 4);
 
   return (
     <Link
-      href={`/india/${state.slug}`}
+      href={`${hrefBase}/${state.slug}`}
       className="panel rounded-[2rem] p-6 transition hover:-translate-y-1"
     >
       <div className="flex flex-wrap items-center justify-between gap-3">

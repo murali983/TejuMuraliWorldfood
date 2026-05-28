@@ -40,12 +40,12 @@ const indianArchiveSchema = {
 };
 
 export const metadata = buildMetadata({
-  title: "2500+ Indian Dishes Archive",
+  title: "5000+ Indian Dishes Archive",
   description:
-    "Browse more than 2,500 visible Indian dish archive entries across every state and union territory on Tejaswi Murali World Foods.",
+    "Browse more than 5,000 visible Indian dish archive entries across every state and union territory on Tejaswi Murali World Foods.",
   path: "/india/dishes",
   keywords: [
-    "2500 Indian dishes",
+    "5000 Indian dishes",
     "Indian food archive",
     "India state wise dishes",
     "all Indian foods",
@@ -63,7 +63,7 @@ export default function IndianDishesArchivePage() {
       <BreadcrumbTrail items={breadcrumbItems} />
       <PageHero
         eyebrow="Indian Dishes Archive"
-        title="A visible archive of 2,500+ Indian dish entries."
+        title="A visible archive of 5,000+ Indian dish entries."
         description="This page is built to solve the exact problem of the site looking too small. Instead of showing only a few recipe cards, the platform now exposes a much larger India-only archive that visitors can browse by state, category, status, and keyword."
       />
 
